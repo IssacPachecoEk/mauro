@@ -18,9 +18,9 @@ function App() {
             <Navigation />
             
             <main>
-              <Route path="/" component={Home} />
-              <Route path="/nosotros" component={About} />
-              <Route path="/contacto" component={Contact} />
+              <Route path="/mauro/" component={Home} />
+              <Route path="/mauro/nosotros" component={About} />
+              <Route path="/mauro/contacto" component={Contact} />
             </main>
           </div>
           <Toaster />
