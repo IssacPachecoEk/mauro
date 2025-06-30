@@ -19,7 +19,7 @@ export function Navigation() {
 
           {/* Navigation Links */}
           <div className="hidden md:flex space-x-8">
-            <Link href="/mauro/">
+            <Link href="/">
               <Button
                 variant={location === "/" ? "default" : "ghost"}
                 className="flex items-center space-x-2"
@@ -28,7 +28,7 @@ export function Navigation() {
                 <span>Inicio</span>
               </Button>
             </Link>
-            <Link href="/mauro/nosotros">
+            <Link href="/nosotros">
               <Button
                 variant={location === "/nosotros" ? "default" : "ghost"}
                 className="flex items-center space-x-2"
@@ -37,7 +37,7 @@ export function Navigation() {
                 <span>Sobre mi</span>
               </Button>
             </Link>
-            <Link href="/mauro/contacto">
+            <Link href="/contacto">
               <Button
                 variant={location === "/contacto" ? "default" : "ghost"}
                 className="flex items-center space-x-2"
