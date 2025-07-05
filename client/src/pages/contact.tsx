@@ -21,7 +21,7 @@ type ContactFormData = z.infer<typeof contactFormSchema>;
 
 export default function Contact() {
   const { toast } = useToast();
-  
+
   const form = useForm<ContactFormData>({
     resolver: zodResolver(contactFormSchema),
     defaultValues: {
@@ -36,12 +36,12 @@ export default function Contact() {
   const onSubmit = (data: ContactFormData) => {
     // En una aplicación real, aquí enviarías los datos al servidor
     console.log("Datos del formulario:", data);
-    
+
     toast({
       title: "Mensaje Enviado",
       description: "Hemos recibido tu solicitud. Te contactaremos pronto.",
     });
-    
+
     form.reset();
   };
 
@@ -49,7 +49,7 @@ export default function Contact() {
     <div className="space-y-12">
       {/* Hero Section */}
       <section className="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-20 relative"
-      style={{ minHeight: '400px' }}>
+        style={{ minHeight: '400px' }}>
         <div
           className="absolute inset-0 w-full h-full z-0"
           style={{
@@ -136,7 +136,7 @@ export default function Contact() {
                       <FormItem>
                         <FormLabel>Tipo de Proyecto *</FormLabel>
                         <FormControl>
-                          <select 
+                          <select
                             className="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                             {...field}
                           >
@@ -162,7 +162,7 @@ export default function Contact() {
                       <FormItem>
                         <FormLabel>Descripción del Proyecto *</FormLabel>
                         <FormControl>
-                          <Textarea 
+                          <Textarea
                             placeholder="Describe tu proyecto, ubicación, presupuesto estimado, y cualquier detalle importante..."
                             className="min-h-[120px]"
                             {...field}
@@ -285,17 +285,17 @@ export default function Contact() {
             <h2 className="text-3xl font-bold mb-4">Mi Ubicación</h2>
             <p className="text-gray-600">Visítanos en mi oficina central</p>
           </div>
-          
+
           <Card className="max-w-4xl mx-auto">
             <CardContent className="p-0">
               <div className="h-96 bg-gray-300 rounded-lg flex items-center justify-center">
-                <div className="text-center">
-                  <MapPin className="h-16 w-16 text-gray-500 mx-auto mb-4" />
-                  <p className="text-gray-600">
-                    Mapa interactivo<br />
-                    Calle 21 por 22 y 24 #102<br />
-                    Hoctun, Yucatan CP 97480
-                  </p>
+                <div style={{ overflow: 'hidden', width: '100%', height: '100%', position: 'relative' }}>
+                  <iframe
+                    width="100%"
+                    height="100%"
+                    src="https://maps.google.com/maps?q=Materiales%20Para%20Construcci%C3%B3n%20Bibi,%20Hoctun,%20Yucatan&t=&z=16&ie=UTF8&iwloc=&output=embed"
+                    style={{ border: 0 }}
+                  ></iframe>
                 </div>
               </div>
             </CardContent>
