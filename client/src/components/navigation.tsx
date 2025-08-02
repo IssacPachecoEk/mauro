@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Building2, Home, Users, Phone, FolderOpen } from "lucide-react";
 import { useState } from "react"; // Añadimos useState para controlar el menú móvil
 import { useLanguage } from "@/contexts/LanguageContext";
+import { USFlag, MXFlag } from "@/components/ui/flag-icons";
 
 export function Navigation() {
   const [location] = useLocation();
@@ -70,9 +71,9 @@ export function Navigation() {
                 className="flex items-center space-x-2"
               >
                 {language === 'es' ? (
-                  <span className="text-lg">🇲🇽</span>
+                  <MXFlag className="rounded-sm" width={20} height={14} />
                 ) : (
-                  <span className="text-lg">🇺🇸</span>
+                  <USFlag className="rounded-sm" width={20} height={14} />
                 )}
               </Button>
             </div>
@@ -139,12 +140,12 @@ export function Navigation() {
               >
                 {language === 'es' ? (
                   <>
-                    <span className="text-lg mr-2">🇲🇽</span>
+                    <MXFlag className="rounded-sm mr-2" width={20} height={14} />
                     Español
                   </>
                 ) : (
                   <>
-                    <span className="text-lg mr-2">🇺🇸</span>
+                    <USFlag className="rounded-sm mr-2" width={20} height={14} />
                     English
                   </>
                 )}
