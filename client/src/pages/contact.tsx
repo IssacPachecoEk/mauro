@@ -8,6 +8,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { useToast } from "@/hooks/use-toast";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const contactFormSchema = z.object({
   nombre: z.string().min(2, "El nombre debe tener al menos 2 caracteres"),
@@ -21,6 +22,7 @@ type ContactFormData = z.infer<typeof contactFormSchema>;
 
 export default function Contact() {
   const { toast } = useToast();
+  const { t } = useLanguage();
 
   const form = useForm<ContactFormData>({
     resolver: zodResolver(contactFormSchema),
@@ -62,10 +64,10 @@ export default function Contact() {
         <div className="container mx-auto px-4 text-center relative">
           <div className="max-w-4xl mx-auto">
             <h1 className="text-4xl md:text-6xl font-bold mb-6">
-              Contactame
+              {t('contact.hero.title')}
             </h1>
             <p className="text-xl md:text-2xl text-blue-100">
-              Estoy listo para hacer realidad tu proyecto de construcción. Solicita tu presupuesto gratuito
+              {t('contact.hero.subtitle')}
             </p>
           </div>
         </div>
@@ -77,9 +79,9 @@ export default function Contact() {
           {/* Contact Form */}
           <Card>
             <CardHeader>
-              <CardTitle className="text-2xl">Solicitar Presupuesto</CardTitle>
+              <CardTitle className="text-2xl">{t('contact.form.title')}</CardTitle>
               <p className="text-gray-600">
-                Completa el formulario y me pongo en contacto contigo en menos de 24 horas
+                {t('contact.form.subtitle')}
               </p>
             </CardHeader>
             <CardContent>
@@ -90,9 +92,9 @@ export default function Contact() {
                     name="nombre"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Nombre Completo *</FormLabel>
+                        <FormLabel>{t('contact.form.name')} *</FormLabel>
                         <FormControl>
-                          <Input placeholder="Tu nombre completo" {...field} />
+                          <Input placeholder={t('contact.form.name.placeholder')} {...field} />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -105,9 +107,9 @@ export default function Contact() {
                       name="email"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>Email *</FormLabel>
+                          <FormLabel>{t('contact.form.email')} *</FormLabel>
                           <FormControl>
-                            <Input type="email" placeholder="tu@email.com" {...field} />
+                            <Input type="email" placeholder={t('contact.form.email.placeholder')} {...field} />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
@@ -119,9 +121,9 @@ export default function Contact() {
                       name="telefono"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>Teléfono *</FormLabel>
+                          <FormLabel>{t('contact.form.phone')} *</FormLabel>
                           <FormControl>
-                            <Input type="tel" placeholder="+52 55 1234 5678" {...field} />
+                            <Input type="tel" placeholder={t('contact.form.phone.placeholder')} {...field} />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
@@ -134,20 +136,20 @@ export default function Contact() {
                     name="tipoProyecto"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Tipo de Proyecto *</FormLabel>
+                        <FormLabel>{t('contact.form.project-type')} *</FormLabel>
                         <FormControl>
                           <select
                             className="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                             {...field}
                           >
-                            <option value="">Selecciona el tipo de proyecto</option>
-                            <option value="casa">Casa Residencial</option>
-                            <option value="departamento">Departamento</option>
-                            <option value="oficina">Oficina</option>
-                            <option value="comercial">Local Comercial</option>
-                            <option value="industrial">Nave Industrial</option>
-                            <option value="remodelacion">Remodelación</option>
-                            <option value="otro">Otro</option>
+                            <option value="">{t('contact.form.project-type.placeholder')}</option>
+                            <option value="casa">{t('contact.form.project-type.casa')}</option>
+                            <option value="departamento">{t('contact.form.project-type.departamento')}</option>
+                            <option value="oficina">{t('contact.form.project-type.oficina')}</option>
+                            <option value="comercial">{t('contact.form.project-type.comercial')}</option>
+                            <option value="industrial">{t('contact.form.project-type.industrial')}</option>
+                            <option value="remodelacion">{t('contact.form.project-type.remodelacion')}</option>
+                            <option value="otro">{t('contact.form.project-type.otro')}</option>
                           </select>
                         </FormControl>
                         <FormMessage />
@@ -160,10 +162,10 @@ export default function Contact() {
                     name="mensaje"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Descripción del Proyecto *</FormLabel>
+                        <FormLabel>{t('contact.form.message')} *</FormLabel>
                         <FormControl>
                           <Textarea
-                            placeholder="Describe tu proyecto, ubicación, presupuesto estimado, y cualquier detalle importante..."
+                            placeholder={t('contact.form.message.placeholder')}
                             className="min-h-[120px]"
                             {...field}
                           />
@@ -175,7 +177,7 @@ export default function Contact() {
 
                   <Button type="submit" size="lg" className="w-full">
                     <Send className="mr-2 h-4 w-4" />
-                    Enviar Solicitud
+                    {t('contact.form.send')}
                   </Button>
                 </form>
               </Form>
@@ -188,32 +190,32 @@ export default function Contact() {
               <CardHeader>
                 <CardTitle className="flex items-center gap-3">
                   <Phone className="h-6 w-6 text-blue-600" />
-                  Información de Contacto
+                  {t('contact.info.title')}
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="flex items-start gap-3">
                   <Phone className="h-5 w-5 text-blue-600 mt-1" />
                   <div>
-                    <h4 className="font-semibold">Teléfono</h4>
+                    <h4 className="font-semibold">{t('contact.info.phone')}</h4>
                     <p className="text-gray-600">+52 55 1234 5678</p>
-                    <p className="text-sm text-gray-500">Lunes a Viernes: 8:00 AM - 6:00 PM</p>
+                    <p className="text-sm text-gray-500">{t('contact.info.phone.schedule')}</p>
                   </div>
                 </div>
 
                 <div className="flex items-start gap-3">
                   <Mail className="h-5 w-5 text-blue-600 mt-1" />
                   <div>
-                    <h4 className="font-semibold">Email</h4>
+                    <h4 className="font-semibold">{t('contact.info.email')}</h4>
                     <p className="text-gray-600">mauro@constructora.com</p>
-                    <p className="text-sm text-gray-500">Respuesta en menos de 24 horas</p>
+                    <p className="text-sm text-gray-500">{t('contact.info.email.response')}</p>
                   </div>
                 </div>
 
                 <div className="flex items-start gap-3">
                   <MapPin className="h-5 w-5 text-blue-600 mt-1" />
                   <div>
-                    <h4 className="font-semibold">Oficina</h4>
+                    <h4 className="font-semibold">{t('contact.info.office')}</h4>
                     <p className="text-gray-600">
                       Calle 21 por 22 y 24 #102<br />
                       Hoctun, Yucatan CP 97480
@@ -224,10 +226,10 @@ export default function Contact() {
                 <div className="flex items-start gap-3">
                   <Clock className="h-5 w-5 text-blue-600 mt-1" />
                   <div>
-                    <h4 className="font-semibold">Horarios de Atención</h4>
+                    <h4 className="font-semibold">{t('contact.info.schedule')}</h4>
                     <p className="text-gray-600">
-                      Lunes a Viernes: 8:00 AM - 6:00 PM<br />
-                      Sábados: 9:00 AM - 2:00 PM
+                      {t('contact.info.schedule.weekdays')}<br />
+                      {t('contact.info.schedule.saturday')}
                     </p>
                   </div>
                 </div>
@@ -236,27 +238,27 @@ export default function Contact() {
 
             <Card className="bg-blue-50 border-blue-200">
               <CardContent className="pt-6">
-                <h3 className="text-lg font-semibold mb-3">¿Por qué elegirme?</h3>
+                <h3 className="text-lg font-semibold mb-3">{t('contact.why.title')}</h3>
                 <ul className="space-y-2 text-sm text-gray-600">
                   <li className="flex items-center gap-2">
                     <div className="w-2 h-2 bg-blue-600 rounded-full"></div>
-                    Presupuesto gratuito y sin compromiso
+                    {t('contact.why.free-quote')}
                   </li>
                   <li className="flex items-center gap-2">
                     <div className="w-2 h-2 bg-blue-600 rounded-full"></div>
-                    Más de 6 meses de experiencia
+                    {t('contact.why.experience')}
                   </li>
                   <li className="flex items-center gap-2">
                     <div className="w-2 h-2 bg-blue-600 rounded-full"></div>
-                    Garantía en todos mis trabajos
+                    {t('contact.why.warranty')}
                   </li>
                   <li className="flex items-center gap-2">
                     <div className="w-2 h-2 bg-blue-600 rounded-full"></div>
-                    Materiales de primera calidad
+                    {t('contact.why.materials')}
                   </li>
                   <li className="flex items-center gap-2">
                     <div className="w-2 h-2 bg-blue-600 rounded-full"></div>
-                    Cumplimiento de plazos garantizado
+                    {t('contact.why.delivery')}
                   </li>
                 </ul>
               </CardContent>
@@ -265,13 +267,13 @@ export default function Contact() {
             <Card className="bg-green-50 border-green-200">
               <CardContent className="pt-6 text-center">
                 <h3 className="text-lg font-semibold mb-2 text-green-800">
-                  ¡Consulta Gratuita!
+                  {t('contact.consultation.title')}
                 </h3>
                 <p className="text-sm text-green-700 mb-4">
-                  Agenda una cita para discutir tu proyecto sin ningún costo
+                  {t('contact.consultation.subtitle')}
                 </p>
                 <Button className="bg-green-600 hover:bg-green-700">
-                  Agendar Cita
+                  {t('contact.consultation.button')}
                 </Button>
               </CardContent>
             </Card>
@@ -282,8 +284,8 @@ export default function Contact() {
       <section className="bg-gray-50 py-16">
         <div className="container mx-auto px-4">
           <div className="text-center mb-8">
-            <h2 className="text-3xl font-bold mb-4">Mi Ubicación</h2>
-            <p className="text-gray-600">Visítanos en mi oficina central</p>
+            <h2 className="text-3xl font-bold mb-4">{t('contact.location.title')}</h2>
+            <p className="text-gray-600">{t('contact.location.subtitle')}</p>
           </div>
 
           <Card className="max-w-4xl mx-auto">

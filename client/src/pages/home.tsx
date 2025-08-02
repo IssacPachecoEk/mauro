@@ -2,8 +2,11 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Building2, Hammer, Users, Award, ArrowRight, Phone } from "lucide-react";
 import { Link } from "wouter";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export default function Home() {
+  const { t } = useLanguage();
+  
   return (
     <div className="space-y-12">
       {/* Hero Section */}
@@ -20,21 +23,21 @@ export default function Home() {
         <div className="container mx-auto px-4 text-center relative">
           <div className="max-w-4xl mx-auto">
             <h1 className="text-4xl md:text-6xl font-bold mb-6">
-              Mauro Muñoz Construcciones
+              {t('home.hero.title')}
             </h1>
             <p className="text-xl md:text-2xl mb-8 text-blue-100">
-              Soy un ingeniero civil con más de 6 meses de experiencia en proyectos residenciales y comerciales.
+              {t('home.hero.subtitle')}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/contacto">
                 <Button size="lg" variant="secondary" className="bg-white text-blue-600 hover:bg-blue-500">
-                  Solicitar Presupuesto
+                  {t('home.hero.button.quote')}
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
               </Link>
               <Link href="/nosotros">
                 <Button size="lg" variant="secondary" className="bg-white text-blue-600 hover:bg-blue-500">
-                  Conoce Más
+                  {t('home.hero.button.learn')}
                 </Button>
               </Link>
             </div>
@@ -45,9 +48,9 @@ export default function Home() {
       {/* Services Section */}
       <section className="container mx-auto px-4">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Mis Servicios</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">{t('home.services.title')}</h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Ofrezco una amplia gama de servicios de construcción para satisfacer todas tus necesidades
+            {t('home.services.subtitle')}
           </p>
         </div>
 
@@ -56,17 +59,17 @@ export default function Home() {
             <CardHeader>
               <CardTitle className="flex items-center gap-3">
                 <Building2 className="h-8 w-8 text-blue-600" />
-                <span>Construcción Residencial</span>
+                <span>{t('home.services.residential.title')}</span>
               </CardTitle>
             </CardHeader>
             <CardContent>
               <p className="text-gray-600 mb-4">
-                Casas, condominios y proyectos habitacionales con los más altos estándares de calidad.
+                {t('home.services.residential.description')}
               </p>
               <ul className="space-y-2 text-sm text-gray-600">
-                <li>• Diseño arquitectónico personalizado</li>
-                <li>• Construcción llave en mano</li>
-                <li>• Remodelaciones y ampliaciones</li>
+                <li>• {t('home.services.residential.item1')}</li>
+                <li>• {t('home.services.residential.item2')}</li>
+                <li>• {t('home.services.residential.item3')}</li>
               </ul>
             </CardContent>
           </Card>
@@ -75,17 +78,17 @@ export default function Home() {
             <CardHeader>
               <CardTitle className="flex items-center gap-3">
                 <Hammer className="h-8 w-8 text-blue-600" />
-                <span>Construcción Comercial</span>
+                <span>{t('home.services.commercial.title')}</span>
               </CardTitle>
             </CardHeader>
             <CardContent>
               <p className="text-gray-600 mb-4">
-                Oficinas, locales comerciales y naves industriales adaptadas a las necesidades de tu negocio.
+                {t('home.services.commercial.description')}
               </p>
               <ul className="space-y-2 text-sm text-gray-600">
-                <li>• Edificios de oficinas</li>
-                <li>• Centros comerciales</li>
-                <li>• Instalaciones industriales</li>
+                <li>• {t('home.services.commercial.item1')}</li>
+                <li>• {t('home.services.commercial.item2')}</li>
+                <li>• {t('home.services.commercial.item3')}</li>
               </ul>
             </CardContent>
           </Card>
@@ -94,17 +97,17 @@ export default function Home() {
             <CardHeader>
               <CardTitle className="flex items-center gap-3">
                 <Users className="h-8 w-8 text-blue-600" />
-                <span>Consultoría y Diseño</span>
+                <span>{t('home.services.consulting.title')}</span>
               </CardTitle>
             </CardHeader>
             <CardContent>
               <p className="text-gray-600 mb-4">
-                Asesoramiento profesional desde la planificación hasta la ejecución de tu proyecto.
+                {t('home.services.consulting.description')}
               </p>
               <ul className="space-y-2 text-sm text-gray-600">
-                <li>• Estudios de factibilidad</li>
-                <li>• Gestión de permisos</li>
-                <li>• Supervisión de obra</li>
+                <li>• {t('home.services.consulting.item1')}</li>
+                <li>• {t('home.services.consulting.item2')}</li>
+                <li>• {t('home.services.consulting.item3')}</li>
               </ul>
             </CardContent>
           </Card>
@@ -112,40 +115,47 @@ export default function Home() {
       </section>
 
       {/* Why Choose Us Section */}
-      <section className="bg-gray-50 py-16">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">¿Por Qué Elegirnos?</h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Me destaco por mi experiencia, calidad y compromiso con cada proyecto
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-4 gap-8">
-            <div className="text-center">
+      <section className="container mx-auto px-4">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">{t('home.why.title')}</h2>
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            {t('home.why.subtitle')}
+          </p>
+        </div>
+        <div className="grid md:grid-cols-3 gap-8 justify-center">
+          <Card className="hover:shadow-lg transition-shadow flex flex-col items-center text-center">
+            <CardHeader>
               <div className="bg-blue-600 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
                 <Award className="h-8 w-8 text-white" />
               </div>
-              <h3 className="text-xl font-semibold mb-2">+6 Meses</h3>
-              <p className="text-gray-600">De experiencia en el sector</p>
-            </div>
-
-            <div className="text-center">
+              <CardTitle className="text-xl font-semibold mb-2">{t('home.why.experience')}</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-gray-600">{t('home.why.experience.desc')}</p>
+            </CardContent>
+          </Card>
+          <Card className="hover:shadow-lg transition-shadow flex flex-col items-center text-center">
+            <CardHeader>
               <div className="bg-blue-600 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
                 <Building2 className="h-8 w-8 text-white" />
               </div>
-              <h3 className="text-xl font-semibold mb-2">+5 Proyectos</h3>
-              <p className="text-gray-600">Completados exitosamente</p>
-            </div>
-
-            <div className="text-center">
+              <CardTitle className="text-xl font-semibold mb-2">{t('home.why.projects')}</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-gray-600">{t('home.why.projects.desc')}</p>
+            </CardContent>
+          </Card>
+          <Card className="hover:shadow-lg transition-shadow flex flex-col items-center text-center">
+            <CardHeader>
               <div className="bg-blue-600 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
                 <Hammer className="h-8 w-8 text-white" />
               </div>
-              <h3 className="text-xl font-semibold mb-2">Calidad Garantizada</h3>
-              <p className="text-gray-600">Materiales de primera calidad</p>
-            </div>
-          </div>
+              <CardTitle className="text-xl font-semibold mb-2">{t('home.why.quality')}</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-gray-600">{t('home.why.quality.desc')}</p>
+            </CardContent>
+          </Card>
         </div>
       </section>
 
@@ -154,15 +164,15 @@ export default function Home() {
         <Card className="bg-blue-600 text-white">
           <CardContent className="py-12">
             <h2 className="text-3xl font-bold mb-4">
-              ¿Listo para Comenzar tu Proyecto?
+              {t('home.cta.title')}
             </h2>
             <p className="text-xl mb-8 text-blue-100">
-              Contáctame hoy y recibe una consulta gratuita para tu proyecto de construcción
+              {t('home.cta.subtitle')}
             </p>
             <Link href="/contacto">
               <Button size="lg" variant="secondary" className="bg-white text-blue-600 hover:bg-blue-500">
                 <Phone className="mr-2 h-5 w-5" />
-                Contactar Ahora
+                {t('home.cta.button')}
               </Button>
             </Link>
           </CardContent>

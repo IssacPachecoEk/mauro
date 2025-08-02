@@ -2,8 +2,11 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Building2, Users, Target, Heart, Award, Calendar } from "lucide-react";
 import { Link } from "wouter";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export default function About() {
+  const { t } = useLanguage();
+  
   return (
     <div className="space-y-12">
       {/* Hero Section */}
@@ -23,10 +26,10 @@ export default function About() {
         <div className="container mx-auto px-4 text-center relative z-10">
           <div className="max-w-4xl mx-auto">
             <h1 className="text-4xl md:text-6xl font-bold mb-6">
-              Sobre Mi
+              {t('about.hero.title')}
             </h1>
             <p className="text-xl md:text-2xl text-gray-300">
-              Más de 6 meses construyendo sueños y transformando espacios con calidad, innovación y compromiso
+              {t('about.hero.subtitle')}
             </p>
           </div>
         </div>
@@ -36,20 +39,16 @@ export default function About() {
       <section className="container mx-auto px-4">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div>
-            <h2 className="text-3xl font-bold mb-6">Mi Historia</h2>
+            <h2 className="text-3xl font-bold mb-6">{t('about.story.title')}</h2>
             <div className="space-y-4 text-gray-600">
               <p>
-                Mauro Muñoz Construcciones nació en 2025 con la visión de transformar la industria de la construcción 
-                a través de la excelencia, la innovación y el compromiso con nuestros clientes.
+                {t('about.story.paragraph1')}
               </p>
               <p>
-                Desde mis inicios como una pequeña empresa escolar, he crecido hasta convertirme 
-                en una de los ingenieros civiles emergente de la región, completando más de 5 proyectos 
-                exitosos en los sectores residencial y comercial.
+                {t('about.story.paragraph2')}
               </p>
               <p>
-                Mi éxito se basa en tres pilares fundamentales: calidad en cada detalle, 
-                cumplimiento de plazos y presupuestos.
+                {t('about.story.paragraph3')}
               </p>
             </div>
           </div>
@@ -57,22 +56,22 @@ export default function About() {
             <Card className="text-center p-6">
               <Calendar className="h-12 w-12 text-blue-600 mx-auto mb-4" />
               <h3 className="text-2xl font-bold">2025</h3>
-              <p className="text-gray-600">Año de fundación</p>
+              <p className="text-gray-600">{t('about.story.foundation')}</p>
             </Card>
             <Card className="text-center p-6">
               <Building2 className="h-12 w-12 text-blue-600 mx-auto mb-4" />
               <h3 className="text-2xl font-bold">5+</h3>
-              <p className="text-gray-600">Proyectos completados</p>
+              <p className="text-gray-600">{t('about.story.completed')}</p>
             </Card>
             <Card className="text-center p-6">
               <Users className="h-12 w-12 text-blue-600 mx-auto mb-4" />
               <h3 className="text-2xl font-bold">1</h3>
-              <p className="text-gray-600">Empleados</p>
+              <p className="text-gray-600">{t('about.story.employees')}</p>
             </Card>
             <Card className="text-center p-6">
               <Award className="h-12 w-12 text-blue-600 mx-auto mb-4" />
               <h3 className="text-2xl font-bold">6</h3>
-              <p className="text-gray-600">Meses de experiencia</p>
+              <p className="text-gray-600">{t('about.story.months')}</p>
             </Card>
           </div>
         </div>
@@ -82,9 +81,9 @@ export default function About() {
       <section className="bg-gray-50 py-16">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Mis Valores</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">{t('about.values.title')}</h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Los principios que guían cada uno de mis proyectos y definen nuestra cultura empresarial
+              {t('about.story.subtitle')}
             </p>
           </div>
 
@@ -92,12 +91,11 @@ export default function About() {
             <Card className="text-center">
               <CardHeader>
                 <Target className="h-12 w-12 text-blue-600 mx-auto mb-4" />
-                <CardTitle>Misión</CardTitle>
+                <CardTitle>{t('about.mission.title')}</CardTitle>
               </CardHeader>
               <CardContent>
                 <p className="text-gray-600">
-                  Construir espacios que mejoren la calidad de vida de las personas, 
-                  utilizando las mejores prácticas, materiales de calidad y tecnología innovadora.
+                  {t('about.mission.text')}
                 </p>
               </CardContent>
             </Card>
@@ -105,12 +103,11 @@ export default function About() {
             <Card className="text-center">
               <CardHeader>
                 <Building2 className="h-12 w-12 text-blue-600 mx-auto mb-4" />
-                <CardTitle>Visión</CardTitle>
+                <CardTitle>{t('about.vision.title')}</CardTitle>
               </CardHeader>
               <CardContent>
                 <p className="text-gray-600">
-                  Ser el ingeniero civil líder en la región, reconocida por la excelencia 
-                  en mis proyectos y el compromiso con la satisfacción del cliente.
+                  {t('about.vision.text')}
                 </p>
               </CardContent>
             </Card>
@@ -118,14 +115,14 @@ export default function About() {
             <Card className="text-center">
               <CardHeader>
                 <Heart className="h-12 w-12 text-blue-600 mx-auto mb-4" />
-                <CardTitle>Valores</CardTitle>
+                <CardTitle>{t('about.values.title')}</CardTitle>
               </CardHeader>
               <CardContent>
                 <ul className="text-gray-600 space-y-2">
-                  <li>• Calidad y excelencia</li>
-                  <li>• Honestidad y transparencia</li>
-                  <li>• Compromiso y responsabilidad</li>
-                  <li>• Innovación continua</li>
+                  <li>• {t('about.values.integrity.title')}: {t('about.values.integrity.desc')}</li>
+                  <li>• {t('about.values.excellence.title')}: {t('about.values.excellence.desc')}</li>
+                  <li>• {t('about.values.innovation.title')}: {t('about.values.innovation.desc')}</li>
+                  <li>• {t('about.values.customer.title')}: {t('about.values.customer.desc')}</li>
                 </ul>
               </CardContent>
             </Card>
@@ -136,9 +133,9 @@ export default function About() {
       {/* Team Section */}
       <section className="container mx-auto px-4">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Mi Equipo</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">{t('about.team.title')}</h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Un equipo multidisciplinario de profesionales comprometidos con la excelencia
+            {t('about.team.subtitle')}
           </p>
         </div>
 
@@ -148,9 +145,9 @@ export default function About() {
               <div className="w-24 h-24 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Users className="h-12 w-12 text-white" />
               </div>
-              <h3 className="text-xl font-bold mb-2">Arquitectos</h3>
+              <h3 className="text-xl font-bold mb-2">{t('about.team.architects')}</h3>
               <p className="text-gray-600">
-                Profesionales creativos que diseñan espacios funcionales y estéticamente atractivos
+                {t('about.team.architects.desc')}
               </p>
             </CardContent>
           </Card>
@@ -160,9 +157,9 @@ export default function About() {
               <div className="w-24 h-24 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Building2 className="h-12 w-12 text-white" />
               </div>
-              <h3 className="text-xl font-bold mb-2">Ingenieros</h3>
+              <h3 className="text-xl font-bold mb-2">{t('about.team.engineers')}</h3>
               <p className="text-gray-600">
-                Especialistas en estructuras, instalaciones y gestión de proyectos de construcción
+                {t('about.team.engineers.desc')}
               </p>
             </CardContent>
           </Card>
@@ -172,9 +169,9 @@ export default function About() {
               <div className="w-24 h-24 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Award className="h-12 w-12 text-white" />
               </div>
-              <h3 className="text-xl font-bold mb-2">Maestros de Obra</h3>
+              <h3 className="text-xl font-bold mb-2">{t('about.team.foremen')}</h3>
               <p className="text-gray-600">
-                Expertos constructores con años de experiencia que garantizan la calidad en cada detalle
+                {t('about.team.foremen.desc')}
               </p>
             </CardContent>
           </Card>
@@ -184,27 +181,28 @@ export default function About() {
       {/* Certifications */}
       <section className="bg-blue-600 text-white py-16">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-8">Certificaciones y Reconocimientos</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-8">{t('about.certifications.title')}</h2>
+          <p className="text-lg text-blue-100 mb-8">{t('about.certifications.subtitle')}</p>
           <div className="grid md:grid-cols-4 gap-8">
             <div>
               <Award className="h-16 w-16 mx-auto mb-4" />
-              <h3 className="text-xl font-bold mb-2">ISO 9001</h3>
-              <p className="text-blue-100">Calidad certificada</p>
+              <h3 className="text-xl font-bold mb-2">{t('about.certifications.degree')}</h3>
+              <p className="text-blue-100">{t('about.certifications.degree.desc')}</p>
             </div>
             <div>
               <Building2 className="h-16 w-16 mx-auto mb-4" />
-              <h3 className="text-xl font-bold mb-2">Cámara de Construcción</h3>
-              <p className="text-blue-100">Miembro activo</p>
+              <h3 className="text-xl font-bold mb-2">{t('about.certifications.experience')}</h3>
+              <p className="text-blue-100">{t('about.certifications.experience.desc')}</p>
             </div>
             <div>
               <Users className="h-16 w-16 mx-auto mb-4" />
-              <h3 className="text-xl font-bold mb-2">Empresa Responsable</h3>
-              <p className="text-blue-100">Certificación social</p>
+              <h3 className="text-xl font-bold mb-2">{t('about.certifications.training')}</h3>
+              <p className="text-blue-100">{t('about.certifications.training.desc')}</p>
             </div>
             <div>
               <Target className="h-16 w-16 mx-auto mb-4" />
-              <h3 className="text-xl font-bold mb-2">Excelencia 2023</h3>
-              <p className="text-blue-100">Premio regional</p>
+              <h3 className="text-xl font-bold mb-2">{t('about.certifications.safety')}</h3>
+              <p className="text-blue-100">{t('about.certifications.safety.desc')}</p>
             </div>
           </div>
         </div>
@@ -215,14 +213,14 @@ export default function About() {
         <Card className="bg-gray-50">
           <CardContent className="py-12">
             <h2 className="text-3xl font-bold mb-4">
-              ¿Quieres ser Parte de Mis Próximos Proyectos?
+              {t('about.cta.title')}
             </h2>
             <p className="text-xl mb-8 text-gray-600">
-              Contáctame y descubre cómo podemos hacer realidad tu proyecto de construcción
+              {t('about.cta.subtitle')}
             </p>
             <Link href="/contacto">
               <Button size="lg" className="bg-blue-600 hover:bg-blue-700">
-                Solicitar Información
+                {t('about.cta.button')}
               </Button>
             </Link>
           </CardContent>

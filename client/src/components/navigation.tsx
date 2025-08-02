@@ -1,11 +1,13 @@
 import { Link, useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
-import { Building2, Home, Users, Phone } from "lucide-react";
+import { Building2, Home, Users, Phone, FolderOpen } from "lucide-react";
 import { useState } from "react"; // Añadimos useState para controlar el menú móvil
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export function Navigation() {
   const [location] = useLocation();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false); // Estado para el menú móvil
+  const { language, setLanguage, t } = useLanguage();
 
   return (
     <>
@@ -22,14 +24,14 @@ export function Navigation() {
             </Link>
 
             {/* Navigation Links (desktop) */}
-            <div className="hidden md:flex space-x-8">
+            <div className="hidden md:flex space-x-8 items-center">
               <Link href="/">
                 <Button
                   variant={location === "/" ? "default" : "ghost"}
                   className="flex items-center space-x-2"
                 >
                   <Home className="h-4 w-4" />
-                  <span>Inicio</span>
+                  <span>{t('nav.inicio')}</span>
                 </Button>
               </Link>
               <Link href="/nosotros">
@@ -38,7 +40,16 @@ export function Navigation() {
                   className="flex items-center space-x-2"
                 >
                   <Users className="h-4 w-4" />
-                  <span>Sobre mi</span>
+                  <span>{t('nav.sobre-mi')}</span>
+                </Button>
+              </Link>
+              <Link href="/proyectos">
+                <Button
+                  variant={location === "/proyectos" ? "default" : "ghost"}
+                  className="flex items-center space-x-2"
+                >
+                  <FolderOpen className="h-4 w-4" />
+                  <span>{t('nav.proyectos')}</span>
                 </Button>
               </Link>
               <Link href="/contacto">
@@ -47,9 +58,23 @@ export function Navigation() {
                   className="flex items-center space-x-2"
                 >
                   <Phone className="h-4 w-4" />
-                  <span>Contacto</span>
+                  <span>{t('nav.contacto')}</span>
                 </Button>
               </Link>
+              
+              {/* Language Toggle */}
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => setLanguage(language === 'es' ? 'en' : 'es')}
+                className="flex items-center space-x-2"
+              >
+                {language === 'es' ? (
+                  <span className="text-lg">🇲🇽</span>
+                ) : (
+                  <span className="text-lg">🇺🇸</span>
+                )}
+              </Button>
             </div>
 
             {/* Mobile menu button */}
@@ -75,7 +100,7 @@ export function Navigation() {
                   className="w-full justify-start"
                 >
                   <Home className="h-4 w-4 mr-2" />
-                  Inicio
+                  {t('nav.inicio')}
                 </Button>
               </Link>
               <Link href="/nosotros" onClick={() => setMobileMenuOpen(false)}>
@@ -84,7 +109,16 @@ export function Navigation() {
                   className="w-full justify-start"
                 >
                   <Users className="h-4 w-4 mr-2" />
-                  Sobre mi
+                  {t('nav.sobre-mi')}
+                </Button>
+              </Link>
+              <Link href="/proyectos" onClick={() => setMobileMenuOpen(false)}>
+                <Button
+                  variant={location === "/proyectos" ? "default" : "ghost"}
+                  className="w-full justify-start"
+                >
+                  <FolderOpen className="h-4 w-4 mr-2" />
+                  {t('nav.proyectos')}
                 </Button>
               </Link>
               <Link href="/contacto" onClick={() => setMobileMenuOpen(false)}>
@@ -93,9 +127,28 @@ export function Navigation() {
                   className="w-full justify-start"
                 >
                   <Phone className="h-4 w-4 mr-2" />
-                  Contacto
+                  {t('nav.contacto')}
                 </Button>
               </Link>
+              
+              {/* Language Toggle Mobile */}
+              <Button
+                variant="ghost"
+                onClick={() => setLanguage(language === 'es' ? 'en' : 'es')}
+                className="w-full justify-start"
+              >
+                {language === 'es' ? (
+                  <>
+                    <span className="text-lg mr-2">🇲🇽</span>
+                    Español
+                  </>
+                ) : (
+                  <>
+                    <span className="text-lg mr-2">🇺🇸</span>
+                    English
+                  </>
+                )}
+              </Button>
             </div>
           )}
         </div>
