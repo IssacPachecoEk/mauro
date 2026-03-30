@@ -8,6 +8,10 @@ import Home from "@/pages/home";
 import About from "@/pages/about";
 import Contact from "@/pages/contact";
 import Projects from "@/pages/projects";
+import { InstalacionesTechosPage } from "@/pages/instalaciones-techos";
+import { InstalacionesMaderaPage } from "@/pages/instalaciones-madera";
+import { ConstruccionAguaPage } from "@/pages/construccion-agua";
+import { ConstruccionTierraPage } from "@/pages/construccion-tierra";
 import { Navigation } from "@/components/navigation";
 import Footer from "@/components/Footer";
 import { LanguageProvider } from "@/contexts/LanguageContext";
@@ -26,6 +30,10 @@ function App() {
                 <Route path="/nosotros" component={About} />
                 <Route path="/proyectos" component={Projects} />
                 <Route path="/contacto" component={Contact} />
+                <Route path="/instalaciones/sanitarias" component={InstalacionesTechosPage} />
+                <Route path="/instalaciones/madera" component={InstalacionesMaderaPage} />
+                <Route path="/construccion/agua" component={ConstruccionAguaPage} />
+                <Route path="/construccion/tierra" component={ConstruccionTierraPage} />
               </main>
               <Footer />
             </div>

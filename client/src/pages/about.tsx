@@ -78,7 +78,7 @@ export default function About() {
       </section>
 
       {/* Mission, Vision, Values */}
-      <section className="bg-gray-50 py-16">
+      <section className="bg-stone-300 py-16">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">{t('about.values.title')}</h2>
@@ -210,7 +210,7 @@ export default function About() {
 
 
       <section className="container mx-auto px-4 text-center">
-        <Card className="bg-gray-50">
+        <Card className="bg-stone-300">
           <CardContent className="py-12">
             <h2 className="text-3xl font-bold mb-4">
               {t('about.cta.title')}

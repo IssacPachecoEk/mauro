@@ -12,12 +12,24 @@ const translations = {
   es: {
     // Navigation
     'nav.inicio': 'Inicio',
-    'nav.sobre-mi': 'Sobre mi',
+    'nav.sobre-mi': 'Arquitectura',
+    // 'nav.sobre-mi': 'Sobre mi',
+    'nav.contacto': 'Ingeniería Estructural',
+    'nav.instalaciones': 'Instalaciones',
+    'nav.construccion': 'Construcción',
     'nav.proyectos': 'Proyectos',
-    'nav.contacto': 'Contacto',
+    
+    // Dropdown Options
+    'nav.instalaciones.sanitarias': 'Sanitarias',
+    'nav.instalaciones.hidraulicas': 'Hidráulicas',
+    'nav.instalaciones.electricas': 'Eléctricas',
+    'nav.instalaciones.especiales': 'Especiales',
+    'nav.construccion.agua': 'Agua',
+    'nav.construccion.tierra': 'Tierra',
+    // 'nav.contacto': 'Contacto',
     
     // Home Page
-    'home.hero.title': 'Mauro Muñoz Construcciones',
+    'home.hero.title': 'Mauro Muñoz y Alvaro May Construcciones',
     'home.hero.subtitle': 'Soy un ingeniero civil con más de 6 meses de experiencia en proyectos residenciales y comerciales.',
     'home.hero.button.quote': 'Solicitar Presupuesto',
     'home.hero.button.learn': 'Conoce Más',
@@ -164,12 +176,22 @@ const translations = {
   en: {
     // Navigation
     'nav.inicio': 'Home',
-    'nav.sobre-mi': 'About Me',
+    'nav.sobre-mi': 'Architecture',
+    'nav.contacto': 'Structural Engineering',
+    'nav.instalaciones': 'Installations',
+    'nav.construccion': 'Construction',
     'nav.proyectos': 'Projects',
-    'nav.contacto': 'Contact',
+    
+    // Dropdown Options
+    'nav.instalaciones.sanitarias': 'Sanitary',
+    'nav.instalaciones.hidraulicas': 'Hydraulic',
+    'nav.instalaciones.electricas': 'Electrical',
+    'nav.instalaciones.especiales': 'Special',
+    'nav.construccion.agua': 'Water',
+    'nav.construccion.tierra': 'Earth',
     
     // Home Page
-    'home.hero.title': 'Mauro Muñoz Construction',
+    'home.hero.title': 'Mauro Muñoz y Alvaro May Construction',
     'home.hero.subtitle': 'I am a civil engineer with more than 6 months of experience in residential and commercial projects.',
     'home.hero.button.quote': 'Request Quote',
     'home.hero.button.learn': 'Learn More',

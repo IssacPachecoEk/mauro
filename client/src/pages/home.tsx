@@ -30,13 +30,13 @@ export default function Home() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/contacto">
-                <Button size="lg" variant="secondary" className="bg-white text-blue-600 hover:bg-blue-500">
+                <Button size="lg" variant="secondary" className="bg-stone-200 text-blue-600 hover:bg-blue-500">
                   {t('home.hero.button.quote')}
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
               </Link>
               <Link href="/nosotros">
-                <Button size="lg" variant="secondary" className="bg-white text-blue-600 hover:bg-blue-500">
+                <Button size="lg" variant="secondary" className="bg-stone-200 text-blue-600 hover:bg-blue-500">
                   {t('home.hero.button.learn')}
                 </Button>
               </Link>
@@ -170,7 +170,7 @@ export default function Home() {
               {t('home.cta.subtitle')}
             </p>
             <Link href="/contacto">
-              <Button size="lg" variant="secondary" className="bg-white text-blue-600 hover:bg-blue-500">
+              <Button size="lg" variant="secondary" className="bg-stone-200 text-blue-600 hover:bg-blue-500">
                 <Phone className="mr-2 h-5 w-5" />
                 {t('home.cta.button')}
               </Button>

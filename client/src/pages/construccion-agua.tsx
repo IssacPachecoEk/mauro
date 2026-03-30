@@ -1,0 +1,75 @@
+import { useLanguage } from "@/contexts/LanguageContext";
+
+export function ConstruccionAguaPage() {
+  const { t } = useLanguage();
+
+  return (
+    <div className="min-h-screen bg-stone-300">
+      {/* Hero Section */}
+      <div className="bg-blue-500 text-white py-20">
+        <div className="container mx-auto px-4 text-center">
+          <h1 className="text-4xl md:text-6xl font-bold mb-6">
+            {t('nav.construccion.agua')}
+          </h1>
+          <p className="text-xl md:text-2xl mb-8">
+            Especialistas en sistemas hidráulicos y construcción con base acuática
+          </p>
+        </div>
+      </div>
+
+      {/* Content Section */}
+      <div className="py-16">
+        <div className="container mx-auto px-4">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div>
+              <h2 className="text-3xl font-bold mb-6">Servicios Hidráulicos</h2>
+              <ul className="space-y-4">
+                <li className="flex items-center">
+                  <span className="w-2 h-2 bg-blue-500 rounded-full mr-3"></span>
+                  Instalaciones hidráulicas
+                </li>
+                <li className="flex items-center">
+                  <span className="w-2 h-2 bg-blue-500 rounded-full mr-3"></span>
+                  Sistemas de drenaje
+                </li>
+                <li className="flex items-center">
+                  <span className="w-2 h-2 bg-blue-500 rounded-full mr-3"></span>
+                  Bombas de agua
+                </li>
+                <li className="flex items-center">
+                  <span className="w-2 h-2 bg-blue-500 rounded-full mr-3"></span>
+                  Cisternas y tinacos
+                </li>
+                <li className="flex items-center">
+                  <span className="w-2 h-2 bg-blue-500 rounded-full mr-3"></span>
+                  Reparación de fugas
+                </li>
+                <li className="flex items-center">
+                  <span className="w-2 h-2 bg-blue-500 rounded-full mr-3"></span>
+                  Mantenimiento integral
+                </li>
+              </ul>
+            </div>
+            <div className="bg-stone-200 p-8 rounded-lg shadow-lg">
+              <h3 className="text-2xl font-bold mb-4">¿Por qué elegir nuestros servicios?</h3>
+              <div className="space-y-4">
+                <div>
+                  <h4 className="font-semibold">Tecnología Moderna</h4>
+                  <p className="text-gray-600">Utilizamos equipos de última generación</p>
+                </div>
+                <div>
+                  <h4 className="font-semibold">Servicio 24/7</h4>
+                  <p className="text-gray-600">Atención de emergencias las 24 horas</p>
+                </div>
+                <div>
+                  <h4 className="font-semibold">Materiales Certificados</h4>
+                  <p className="text-gray-600">Solo usamos materiales aprobados y de calidad</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
