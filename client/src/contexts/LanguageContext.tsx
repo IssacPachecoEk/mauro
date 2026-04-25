@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState, ReactNode } from 'react';
 
-type Language = 'es' | 'en';
+type Language = 'es' | 'en' | 'pt' | 'fr' | 'cn';
 
 interface LanguageContextType {
   language: Language;
@@ -12,21 +12,32 @@ const translations = {
   es: {
     // Navigation
     'nav.inicio': 'Inicio',
-    'nav.sobre-mi': 'Arquitectura',
-    // 'nav.sobre-mi': 'Sobre mi',
-    'nav.contacto': 'Ingeniería Estructural',
+    'nav.arquitectura': 'Arquitectura',
+    'nav.estructural': 'Ingeniería Estructural',
     'nav.instalaciones': 'Instalaciones',
     'nav.construccion': 'Construcción',
     'nav.proyectos': 'Proyectos',
+    'nav.sobre-nosotros': 'Sobre Nosotros',
+    'nav.contacto': 'Contacto',
     
-    // Dropdown Options
+    // Dropdown Option
+    'nav.arquitectura.arquitectonico': 'Diseño arquitectónico',
+    'nav.arquitectura.visual': 'Representación visual',
+    'nav.estructural.sismorresistente': 'Sismorresistente',
+    'nav.estructural.eolica': 'Eólica',
     'nav.instalaciones.sanitarias': 'Sanitarias',
     'nav.instalaciones.hidraulicas': 'Hidráulicas',
     'nav.instalaciones.electricas': 'Eléctricas',
     'nav.instalaciones.especiales': 'Especiales',
-    'nav.construccion.agua': 'Agua',
-    'nav.construccion.tierra': 'Tierra',
-    // 'nav.contacto': 'Contacto',
+    'nav.construccion.civil': 'Civil',
+    'nav.construccion.industrial': 'Industrial',
+    
+    // Language names
+    'language.es': 'Español',
+    'language.en': 'Ingles',
+    'language.pt': 'Portugues',
+    'language.fr': 'Frances',
+    'language.cn': 'Chino',
     
     // Home Page
     'home.hero.title': 'Mauro Muñoz y Alvaro May Construcciones',
@@ -63,13 +74,13 @@ const translations = {
     'home.cta.button': 'Contactar Ahora',
     
     // About Page
-    'about.hero.title': 'Sobre Mi',
-    'about.hero.subtitle': 'Conoce mi experiencia y compromiso con la excelencia en construcción',
+    'about.hero.title': 'Sobre Nosotros',
+    'about.hero.subtitle': 'Conoce nuestra experiencia y compromiso con la excelencia en construcción',
     'about.story.title': 'Mi Historia',
     'about.story.subtitle': 'Un camino de dedicación y crecimiento profesional',
-    'about.story.paragraph1': 'Comencé mi carrera en la ingeniería civil con una pasión inquebrantable por crear espacios que transformen vidas. Desde mis primeros proyectos, me he dedicado a combinar la técnica más avanzada con un enfoque humano y personalizado.',
-    'about.story.paragraph2': 'Mi experiencia abarca desde pequeñas remodelaciones residenciales hasta complejos proyectos comerciales, siempre manteniendo los más altos estándares de calidad y cumplimiento de plazos.',
-    'about.story.paragraph3': 'Cada proyecto representa una oportunidad de crecer, aprender y entregar algo excepcional que supere las expectativas de mis clientes.',
+    'about.story.paragraph1': 'Comenzamos nuestras carreras en ingeniería civil y arquitectura con una pasión inquebrantable por crear espacios que transformen vidas. Desde nuestros primeros proyectos, nos hemos dedicado a combinar la técnica más avanzada con un enfoque humano y personalizado.',
+    'about.story.paragraph2': 'Nuestra experiencia abarca desde pequeñas remodelaciones residenciales hasta complejos proyectos comerciales, siempre manteniendo los más altos estándares de calidad y cumplimiento de plazos.',
+    'about.story.paragraph3': 'Cada proyecto representa una oportunidad de crecer, aprender y entregar algo excepcional que supere las expectativas de nuestros clientes.',
     'about.story.foundation': 'Año de fundación',
     'about.story.completed': 'Proyectos completados',
     'about.story.employees': 'Empleados',
@@ -77,7 +88,7 @@ const translations = {
     'about.mission.title': 'Misión',
     'about.mission.text': 'Transformar ideas en realidades construidas, ofreciendo servicios de construcción e ingeniería de la más alta calidad, con un enfoque en la innovación, sostenibilidad y satisfacción total del cliente.',
     'about.vision.title': 'Visión',
-    'about.vision.text': 'Ser reconocido como el ingeniero civil de referencia en la región, liderando proyectos que marquen la diferencia en el desarrollo urbano y la calidad de vida de las comunidades.',
+    'about.vision.text': 'Ser reconocidos como ingenieros civiles y arquitectos de referencia en la región, liderando proyectos que marquen la diferencia en el desarrollo urbano y la calidad de vida de las comunidades.',
     'about.values.title': 'Valores',
     'about.values.integrity.title': 'Integridad',
     'about.values.integrity.desc': 'Honestidad y transparencia en cada proyecto',
@@ -90,9 +101,9 @@ const translations = {
     'about.certifications.title': 'Certificaciones y Logros',
     'about.certifications.subtitle': 'Respaldado por la educación y experiencia profesional',
     'about.certifications.degree': 'Ingeniería Civil',
-    'about.certifications.degree.desc': 'Universidad Autónoma de Yucatán',
+    'about.certifications.degree.desc': 'Universidad Tecnologica',
     'about.certifications.experience': 'Experiencia Práctica',
-    'about.certifications.experience.desc': 'Más de 6 meses en proyectos diversos',
+    'about.certifications.experience.desc': 'Más de 24 meses en proyectos diversos',
     'about.certifications.training': 'Capacitación Continua',
     'about.certifications.training.desc': 'Actualización constante en normativas',
     'about.certifications.safety': 'Seguridad Industrial',
@@ -106,7 +117,7 @@ const translations = {
     'about.team.foremen': 'Maestros de Obra',
     'about.team.foremen.desc': 'Expertos constructores con años de experiencia que garantizan la calidad en cada detalle',
     'about.cta.title': '¿Quieres ser Parte de Mis Próximos Proyectos?',
-    'about.cta.subtitle': 'Contáctame y descubre cómo podemos hacer realidad tu proyecto de construcción',
+    'about.cta.subtitle': 'Contactanos y descubre cómo podemos hacer realidad tu proyecto de construcción',
     'about.cta.button': 'Solicitar Información',
     
     // Projects Page
@@ -176,165 +187,124 @@ const translations = {
   en: {
     // Navigation
     'nav.inicio': 'Home',
-    'nav.sobre-mi': 'Architecture',
-    'nav.contacto': 'Structural Engineering',
+    'nav.arquitectura': 'Architecture',
+    'nav.estructural': 'Structural Engineering',
     'nav.instalaciones': 'Installations',
     'nav.construccion': 'Construction',
     'nav.proyectos': 'Projects',
     
     // Dropdown Options
+    'nav.arquitectura.arquitectonico': 'Architectural Design',
+    'nav.arquitectura.visual': 'Visual Representation',
+    'nav.estructural.sismorresistente': 'Earthquake Resistant',
+    'nav.estructural.eolica': 'Wind Engineering',
     'nav.instalaciones.sanitarias': 'Sanitary',
     'nav.instalaciones.hidraulicas': 'Hydraulic',
     'nav.instalaciones.electricas': 'Electrical',
     'nav.instalaciones.especiales': 'Special',
-    'nav.construccion.agua': 'Water',
-    'nav.construccion.tierra': 'Earth',
+    'nav.construccion.civil': 'Civil',
+    'nav.construccion.industrial': 'Industrial',
     
-    // Home Page
-    'home.hero.title': 'Mauro Muñoz y Alvaro May Construction',
-    'home.hero.subtitle': 'I am a civil engineer with more than 6 months of experience in residential and commercial projects.',
-    'home.hero.button.quote': 'Request Quote',
-    'home.hero.button.learn': 'Learn More',
-    'home.services.title': 'My Services',
-    'home.services.subtitle': 'I offer a wide range of construction services to meet all your needs',
-    'home.services.residential.title': 'Residential Construction',
-    'home.services.residential.description': 'Houses, condominiums and housing projects with the highest quality standards.',
-    'home.services.residential.item1': 'Custom architectural design',
-    'home.services.residential.item2': 'Turnkey construction',
-    'home.services.residential.item3': 'Renovations and extensions',
-    'home.services.commercial.title': 'Commercial Construction',
-    'home.services.commercial.description': 'Offices, commercial premises and industrial buildings adapted to your business needs.',
-    'home.services.commercial.item1': 'Office buildings',
-    'home.services.commercial.item2': 'Shopping centers',
-    'home.services.commercial.item3': 'Industrial facilities',
-    'home.services.consulting.title': 'Consulting and Design',
-    'home.services.consulting.description': 'Professional advice from planning to execution of your project.',
-    'home.services.consulting.item1': 'Feasibility studies',
-    'home.services.consulting.item2': 'Permit management',
-    'home.services.consulting.item3': 'Construction supervision',
-    'home.why.title': 'Why Choose Us?',
-    'home.why.subtitle': 'I stand out for my experience, quality and commitment to each project',
-    'home.why.experience': '+6 Months',
-    'home.why.experience.desc': 'Of experience in the sector',
-    'home.why.projects': '+5 Projects',
-    'home.why.projects.desc': 'Successfully completed',
-    'home.why.quality': 'Quality Guaranteed',
-    'home.why.quality.desc': 'First quality materials',
-    'home.cta.title': 'Ready to Start Your Project?',
-    'home.cta.subtitle': 'Contact me today and receive a free consultation for your construction project',
-    'home.cta.button': 'Contact Now',
+    // Language names
+    'language.es': 'Spanish',
+    'language.en': 'English',
+    'language.pt': 'Portuguese',
+    'language.fr': 'French',
+    'language.cn': 'Chinese',
+  },
+  pt: {
+    // Navigation
+    'nav.inicio': 'Início',
+    'nav.arquitectura': 'Arquitetura',
+    'nav.estructural': 'Engenharia Estrutural',
+    'nav.instalaciones': 'Instalações',
+    'nav.construccion': 'Construção',
+    'nav.proyectos': 'Projetos',
     
-    // About Page
-    'about.hero.title': 'About Me',
-    'about.hero.subtitle': 'Learn about my experience and commitment to excellence in construction',
-    'about.story.title': 'My Story',
-    'about.story.subtitle': 'A path of dedication and professional growth',
-    'about.story.paragraph1': 'I began my career in civil engineering with an unwavering passion for creating spaces that transform lives. Since my first projects, I have dedicated myself to combining the most advanced techniques with a human and personalized approach.',
-    'about.story.paragraph2': 'My experience ranges from small residential renovations to complex commercial projects, always maintaining the highest standards of quality and deadline compliance.',
-    'about.story.paragraph3': 'Each project represents an opportunity to grow, learn and deliver something exceptional that exceeds my clients\' expectations.',
-    'about.story.foundation': 'Year of foundation',
-    'about.story.completed': 'Completed projects',
-    'about.story.employees': 'Employees',
-    'about.story.months': 'Months of experience',
-    'about.mission.title': 'Mission',
-    'about.mission.text': 'Transform ideas into built realities, offering construction and engineering services of the highest quality, with a focus on innovation, sustainability and total customer satisfaction.',
-    'about.vision.title': 'Vision',
-    'about.vision.text': 'To be recognized as the reference civil engineer in the region, leading projects that make a difference in urban development and quality of life of communities.',
-    'about.values.title': 'Values',
-    'about.values.integrity.title': 'Integrity',
-    'about.values.integrity.desc': 'Honesty and transparency in every project',
-    'about.values.excellence.title': 'Excellence',
-    'about.values.excellence.desc': 'Commitment to the highest quality',
-    'about.values.innovation.title': 'Innovation',
-    'about.values.innovation.desc': 'Cutting-edge techniques and materials',
-    'about.values.customer.title': 'Customer Orientation',
-    'about.values.customer.desc': 'Your satisfaction is our priority',
-    'about.certifications.title': 'Certifications and Achievements',
-    'about.certifications.subtitle': 'Backed by education and professional experience',
-    'about.certifications.degree': 'Civil Engineering',
-    'about.certifications.degree.desc': 'Autonomous University of Yucatan',
-    'about.certifications.experience': 'Practical Experience',
-    'about.certifications.experience.desc': 'More than 6 months in diverse projects',
-    'about.certifications.training': 'Continuous Training',
-    'about.certifications.training.desc': 'Constant updating in regulations',
-    'about.certifications.safety': 'Industrial Safety',
-    'about.certifications.safety.desc': 'Certified in safety protocols',
-    'about.team.title': 'My Team',
-    'about.team.subtitle': 'A multidisciplinary team of professionals committed to excellence',
-    'about.team.architects': 'Architects',
-    'about.team.architects.desc': 'Creative professionals who design functional and aesthetically appealing spaces',
-    'about.team.engineers': 'Engineers',
-    'about.team.engineers.desc': 'Specialists in structures, installations and construction project management',
-    'about.team.foremen': 'Foremen',
-    'about.team.foremen.desc': 'Expert builders with years of experience who guarantee quality in every detail',
-    'about.cta.title': 'Want to be Part of My Next Projects?',
-    'about.cta.subtitle': 'Contact me and discover how we can make your construction project a reality',
-    'about.cta.button': 'Request Information',
+    // Dropdown Options
+    'nav.arquitectura.arquitectonico': 'Design Arquitetônico',
+    'nav.arquitectura.visual': 'Representação Visual',
+    'nav.estructural.sismorresistente': 'Resistente a Terremotos',
+    'nav.estructural.eolica': 'Eólica',
+    'nav.instalaciones.sanitarias': 'Sanitárias',
+    'nav.instalaciones.hidraulicas': 'Hidráulicas',
+    'nav.instalaciones.electricas': 'Elétricas',
+    'nav.instalaciones.especiales': 'Especiais',
+    'nav.construccion.civil': 'Civil',
+    'nav.construccion.industrial': 'Industrial',
     
-    // Projects Page
-    'projects.hero.title': 'My Projects',
-    'projects.hero.subtitle': 'Discover some of the projects I have completed with quality and dedication',
-    'projects.gallery.title': 'Project Gallery',
-    'projects.gallery.subtitle': 'Each project is unique and reflects my commitment to excellence and attention to detail',
-    'projects.cta.title': 'Do you have a project in mind?',
-    'projects.cta.subtitle': 'I would love to know your idea and help you make it a reality with the same quality and dedication',
-    'projects.cta.button': 'Request Free Quote',
-    
-    // Project Data
-    'project.casa-moderna.title': 'Modern Residential House',
-    'project.casa-moderna.description': 'Construction of 200m² family house with contemporary design, luxury finishes and garden.',
-    'project.oficina.title': 'Office Renovation',
-    'project.oficina.description': 'Complete renovation of commercial office with open spaces and modern finishes.',
-    'project.ampliacion.title': 'Residential Extension',
-    'project.ampliacion.description': 'Extension of existing home with new bedroom, full bathroom and living area.',
-    
-    // Contact Page
-    'contact.hero.title': 'Contact Me',
-    'contact.hero.subtitle': 'I am ready to make your construction project a reality. Request your free quote',
-    'contact.form.title': 'Request Quote',
-    'contact.form.subtitle': 'Fill out the form and I will contact you in less than 24 hours',
-    'contact.form.name': 'Full Name',
-    'contact.form.name.placeholder': 'Your full name',
-    'contact.form.email': 'Email',
-    'contact.form.email.placeholder': 'your@email.com',
-    'contact.form.phone': 'Phone',
-    'contact.form.phone.placeholder': '+1 55 1234 5678',
-    'contact.form.project-type': 'Project Type',
-    'contact.form.project-type.placeholder': 'Select project type',
-    'contact.form.project-type.casa': 'Residential House',
-    'contact.form.project-type.departamento': 'Apartment',
-    'contact.form.project-type.oficina': 'Office',
-    'contact.form.project-type.comercial': 'Commercial Space',
-    'contact.form.project-type.industrial': 'Industrial Building',
-    'contact.form.project-type.remodelacion': 'Renovation',
-    'contact.form.project-type.otro': 'Other',
-    'contact.form.message': 'Project Description',
-    'contact.form.message.placeholder': 'Describe your project, location, estimated budget, and any important details...',
-    'contact.form.send': 'Send Request',
-    'contact.info.title': 'Contact Information',
-    'contact.info.phone': 'Phone',
-    'contact.info.phone.schedule': 'Monday to Friday: 8:00 AM - 6:00 PM',
-    'contact.info.email': 'Email',
-    'contact.info.email.response': 'Response in less than 24 hours',
-    'contact.info.office': 'Office',
-    'contact.info.schedule': 'Business Hours',
-    'contact.info.schedule.weekdays': 'Monday to Friday: 8:00 AM - 6:00 PM',
-    'contact.info.schedule.saturday': 'Saturdays: 9:00 AM - 2:00 PM',
-    'contact.why.title': 'Why choose me?',
-    'contact.why.free-quote': 'Free quote with no commitment',
-    'contact.why.experience': 'More than 6 months of experience',
-    'contact.why.warranty': 'Warranty on all my work',
-    'contact.why.materials': 'First quality materials',
-    'contact.why.delivery': 'Guaranteed deadline compliance',
-    'contact.consultation.title': 'Free Consultation!',
-    'contact.consultation.subtitle': 'Schedule an appointment to discuss your project at no cost',
-    'contact.consultation.button': 'Schedule Appointment',
-    'contact.location.title': 'My Location',
-    'contact.location.subtitle': 'Visit us at our main office',
+    // Language names
+    'language.es': 'Espanhol',
+    'language.en': 'Inglês',
+    'language.pt': 'Português',
+    'language.fr': 'Francês',
+    'language.cn': 'Chinês',
     
     // Footer
-    'footer.text': 'Created by Issac Nolberto Pacheco Ek',
-  }
+    'footer.text': 'Criado por Issac Nolberto Pacheco Ek',
+  },
+  fr: {
+    // Navigation
+    'nav.inicio': 'Accueil',
+    'nav.arquitectura': 'Architecture',
+    'nav.estructural': 'Ingénierie Structurelle',
+    'nav.instalaciones': 'Installations',
+    'nav.construccion': 'Construction',
+    'nav.proyectos': 'Projets',
+    
+    // Dropdown Options
+    'nav.arquitectura.arquitectonico': 'Design Architectural',
+    'nav.arquitectura.visual': 'Représentation Visuelle',
+    'nav.estructural.sismorresistente': 'Résistant aux Tremblements',
+    'nav.estructural.eolica': 'Éolienne',
+    'nav.instalaciones.sanitarias': 'Sanitaires',
+    'nav.instalaciones.hidraulicas': 'Hydrauliques',
+    'nav.instalaciones.electricas': 'Électriques',
+    'nav.instalaciones.especiales': 'Spéciales',
+    'nav.construccion.civil': 'Civil',
+    'nav.construccion.industrial': 'Industriel',
+    
+    // Language names
+    'language.es': 'Espagnol',
+    'language.en': 'Anglais',
+    'language.pt': 'Portugais',
+    'language.fr': 'Français',
+    'language.cn': 'Chinois',
+    
+    // Footer
+    'footer.text': 'Créé par Issac Nolberto Pacheco Ek',
+  },
+  cn: {
+    // Navigation
+    'nav.inicio': '首页',
+    'nav.arquitectura': '建筑',
+    'nav.estructural': '结构工程',
+    'nav.instalaciones': '设施安装',
+    'nav.construccion': '施工建设',
+    'nav.proyectos': '项目',
+    
+    // Dropdown Options
+    'nav.arquitectura.arquitectonico': '建筑设计',
+    'nav.arquitectura.visual': '视觉呈现',
+    'nav.estructural.sismorresistente': '抗震',
+    'nav.estructural.eolica': '风力工程',
+    'nav.instalaciones.sanitarias': '卫生设施',
+    'nav.instalaciones.hidraulicas': '水力设施',
+    'nav.instalaciones.electricas': '电气设施',
+    'nav.instalaciones.especiales': '特殊设施',
+    'nav.construccion.civil': '民用建筑',
+    'nav.construccion.industrial': '工业建筑',
+    
+    // Language names
+    'language.es': '西班牙语',
+    'language.en': '英语',
+    'language.pt': '葡萄牙语',
+    'language.fr': '法语',
+    'language.cn': '中文',
+    
+    // Footer
+    'footer.text': '由 Issac Nolberto Pacheco Ek 制作',
+  },
 };
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
@@ -343,7 +313,8 @@ export const LanguageProvider = ({ children }: { children: ReactNode }) => {
   const [language, setLanguage] = useState<Language>('es');
 
   const t = (key: string): string => {
-    return translations[language][key as keyof typeof translations['es']] || key;
+    const currentTranslations = translations[language] as any;
+    return currentTranslations[key] || key;
   };
 
   return (

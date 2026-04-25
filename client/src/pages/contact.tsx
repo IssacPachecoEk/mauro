@@ -48,25 +48,25 @@ export default function Contact() {
   };
 
   return (
-    <div className="space-y-12">
+    <div>
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-20 relative"
-        style={{ minHeight: '400px' }}>
+      <section className="bg-white text-gray-700 py-8 relative border-b border-gray-200"
+        style={{ minHeight: '50px' }}>
         <div
           className="absolute inset-0 w-full h-full z-0"
           style={{
             backgroundImage: "url('/mano.jpg')",
             backgroundSize: 'cover',
             backgroundPosition: 'center',
-            opacity: 0.25,
+            opacity: 0.1,
           }}
         />
-        <div className="container mx-auto px-4 text-center relative">
-          <div className="max-w-4xl mx-auto">
-            <h1 className="text-4xl md:text-6xl font-bold mb-6">
+        <div className="container mx-auto px-4 text-center relative z-10">
+          <div className="max-w-3xl mx-auto">
+            <h1 className="text-3xl md:text-5xl font-bold mb-4 text-gray-800">
               {t('contact.hero.title')}
             </h1>
-            <p className="text-xl md:text-2xl text-blue-100">
+            <p className="text-lg md:text-xl text-gray-600">
               {t('contact.hero.subtitle')}
             </p>
           </div>
@@ -139,7 +139,7 @@ export default function Contact() {
                         <FormLabel>{t('contact.form.project-type')} *</FormLabel>
                         <FormControl>
                           <select
-                            className="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                            className="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-gray-500 focus:border-transparent"
                             {...field}
                           >
                             <option value="">{t('contact.form.project-type.placeholder')}</option>
@@ -189,13 +189,13 @@ export default function Contact() {
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center gap-3">
-                  <Phone className="h-6 w-6 text-blue-600" />
+                  <Phone className="h-6 w-6 text-gray-600" />
                   {t('contact.info.title')}
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="flex items-start gap-3">
-                  <Phone className="h-5 w-5 text-blue-600 mt-1" />
+                  <Phone className="h-5 w-5 text-gray-600 mt-1" />
                   <div>
                     <h4 className="font-semibold">{t('contact.info.phone')}</h4>
                     <p className="text-gray-600">+52 55 1234 5678</p>
@@ -204,7 +204,7 @@ export default function Contact() {
                 </div>
 
                 <div className="flex items-start gap-3">
-                  <Mail className="h-5 w-5 text-blue-600 mt-1" />
+                  <Mail className="h-5 w-5 text-gray-600 mt-1" />
                   <div>
                     <h4 className="font-semibold">{t('contact.info.email')}</h4>
                     <p className="text-gray-600">mauro@constructora.com</p>
@@ -213,7 +213,7 @@ export default function Contact() {
                 </div>
 
                 <div className="flex items-start gap-3">
-                  <MapPin className="h-5 w-5 text-blue-600 mt-1" />
+                  <MapPin className="h-5 w-5 text-gray-600 mt-1" />
                   <div>
                     <h4 className="font-semibold">{t('contact.info.office')}</h4>
                     <p className="text-gray-600">
@@ -224,7 +224,7 @@ export default function Contact() {
                 </div>
 
                 <div className="flex items-start gap-3">
-                  <Clock className="h-5 w-5 text-blue-600 mt-1" />
+                  <Clock className="h-5 w-5 text-gray-600 mt-1" />
                   <div>
                     <h4 className="font-semibold">{t('contact.info.schedule')}</h4>
                     <p className="text-gray-600">
@@ -236,28 +236,28 @@ export default function Contact() {
               </CardContent>
             </Card>
 
-            <Card className="bg-blue-50 border-blue-200">
+            <Card className="bg-gray-50 border-gray-200">
               <CardContent className="pt-6">
                 <h3 className="text-lg font-semibold mb-3">{t('contact.why.title')}</h3>
                 <ul className="space-y-2 text-sm text-gray-600">
                   <li className="flex items-center gap-2">
-                    <div className="w-2 h-2 bg-blue-600 rounded-full"></div>
+                    <div className="w-2 h-2 bg-gray-600 rounded-full"></div>
                     {t('contact.why.free-quote')}
                   </li>
                   <li className="flex items-center gap-2">
-                    <div className="w-2 h-2 bg-blue-600 rounded-full"></div>
+                    <div className="w-2 h-2 bg-gray-600 rounded-full"></div>
                     {t('contact.why.experience')}
                   </li>
                   <li className="flex items-center gap-2">
-                    <div className="w-2 h-2 bg-blue-600 rounded-full"></div>
+                    <div className="w-2 h-2 bg-gray-600 rounded-full"></div>
                     {t('contact.why.warranty')}
                   </li>
                   <li className="flex items-center gap-2">
-                    <div className="w-2 h-2 bg-blue-600 rounded-full"></div>
+                    <div className="w-2 h-2 bg-gray-600 rounded-full"></div>
                     {t('contact.why.materials')}
                   </li>
                   <li className="flex items-center gap-2">
-                    <div className="w-2 h-2 bg-blue-600 rounded-full"></div>
+                    <div className="w-2 h-2 bg-gray-600 rounded-full"></div>
                     {t('contact.why.delivery')}
                   </li>
                 </ul>
@@ -281,7 +281,7 @@ export default function Contact() {
         </div>
       </section>
 
-      <section className="bg-stone-300 py-16">
+      <section className="bg-stone-300 py-2">
         <div className="container mx-auto px-4">
           <div className="text-center mb-8">
             <h2 className="text-3xl font-bold mb-4">{t('contact.location.title')}</h2>

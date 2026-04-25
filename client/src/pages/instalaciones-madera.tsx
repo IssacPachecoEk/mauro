@@ -4,12 +4,12 @@ export function InstalacionesMaderaPage() {
   const { t } = useLanguage();
 
   return (
-    <div className="min-h-screen bg-stone-300">
+    <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <div className="bg-amber-600 text-white py-20">
+      <div className="bg-gray-500 text-white py-20">
         <div className="container mx-auto px-4 text-center">
           <h1 className="text-4xl md:text-6xl font-bold mb-6">
-            {t('nav.instalaciones.madera')}
+            {t('nav.instalaciones.sanitarias')}
           </h1>
           <p className="text-xl md:text-2xl mb-8">
             Especialistas en instalación y fabricación de estructuras de madera
@@ -22,30 +22,30 @@ export function InstalacionesMaderaPage() {
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="text-3xl font-bold mb-6">Servicios de Carpintería</h2>
+              <h2 className="text-3xl font-bold mb-6 text-gray-800">Servicios de Carpintería</h2>
               <ul className="space-y-4">
                 <li className="flex items-center">
-                  <span className="w-2 h-2 bg-amber-600 rounded-full mr-3"></span>
+                  <span className="w-2 h-2 bg-gray-500 rounded-full mr-3"></span>
                   Estructuras de madera
                 </li>
                 <li className="flex items-center">
-                  <span className="w-2 h-2 bg-amber-600 rounded-full mr-3"></span>
+                  <span className="w-2 h-2 bg-gray-500 rounded-full mr-3"></span>
                   Pisos de madera
                 </li>
                 <li className="flex items-center">
-                  <span className="w-2 h-2 bg-amber-600 rounded-full mr-3"></span>
+                  <span className="w-2 h-2 bg-gray-500 rounded-full mr-3"></span>
                   Techos de madera
                 </li>
                 <li className="flex items-center">
-                  <span className="w-2 h-2 bg-amber-600 rounded-full mr-3"></span>
+                  <span className="w-2 h-2 bg-gray-500 rounded-full mr-3"></span>
                   Muebles empotrados
                 </li>
                 <li className="flex items-center">
-                  <span className="w-2 h-2 bg-amber-600 rounded-full mr-3"></span>
+                  <span className="w-2 h-2 bg-gray-500 rounded-full mr-3"></span>
                   Pergolas y terrazas
                 </li>
                 <li className="flex items-center">
-                  <span className="w-2 h-2 bg-amber-600 rounded-full mr-3"></span>
+                  <span className="w-2 h-2 bg-gray-500 rounded-full mr-3"></span>
                   Restauración de madera
                 </li>
               </ul>

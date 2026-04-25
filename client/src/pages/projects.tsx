@@ -1,7 +1,8 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
-import { Calendar, MapPin, Users } from "lucide-react";
+import { Calendar, Link as LinkIcon, MapPin, Users } from "lucide-react";
+import { Link } from "wouter";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 export default function Projects() {
@@ -53,24 +54,24 @@ export default function Projects() {
     }
   ];
   return (
-    <div className="space-y-12">
+    <div>
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-20 relative">
+      <section className="bg-white text-gray-700 py-8 relative border-b border-gray-200">
         <div
           className="absolute inset-0 w-full h-full z-0"
           style={{
             backgroundImage: "url('/sky.jpg')",
             backgroundSize: 'cover',
             backgroundPosition: 'center',
-            opacity: 0.25,
+            opacity: 0.1,
           }}
         />
         <div className="container mx-auto px-4 text-center relative">
-          <div className="max-w-4xl mx-auto">
-            <h1 className="text-4xl md:text-6xl font-bold mb-6">
+          <div className="max-w-3xl mx-auto">
+            <h1 className="text-3xl md:text-5xl font-bold mb-4 text-gray-800">
               {t('projects.hero.title')}
             </h1>
-            <p className="text-xl md:text-2xl text-blue-100">
+            <p className="text-lg md:text-xl text-gray-600">
               {t('projects.hero.subtitle')}
             </p>
           </div>
@@ -78,17 +79,18 @@ export default function Projects() {
       </section>
 
       {/* Projects Gallery */}
-      <section className="container mx-auto px-4">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">{t('projects.gallery.title')}</h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            {t('projects.gallery.subtitle')}
-          </p>
-        </div>
+      <section className="py-8">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-8">
+            <h2 className="text-2xl md:text-3xl font-bold mb-4 text-gray-800">{t('projects.gallery.title')}</h2>
+            <p className="text-gray-600 max-w-2xl mx-auto">
+              {t('projects.gallery.subtitle')}
+            </p>
+          </div>
 
-        <div className="space-y-16">
+        <div className="space-y-12">
           {proyectos.map((proyecto, index) => (
-            <Card key={proyecto.id} className="overflow-hidden shadow-lg">
+            <Card key={proyecto.id} className="overflow-hidden shadow-lg bg-white border border-gray-200">
               <div className={`grid lg:grid-cols-2 gap-0 ${index % 2 === 1 ? 'lg:grid-flow-col-dense' : ''}`}>
                 {/* Carousel de imágenes */}
                 <div className={`${index % 2 === 1 ? 'lg:col-start-2' : ''}`}>
@@ -114,7 +116,7 @@ export default function Projects() {
                 {/* Información del proyecto */}
                 <div className={`${index % 2 === 1 ? 'lg:col-start-1' : ''}`}>
                   <CardHeader>
-                    <CardTitle className="text-2xl text-blue-600">
+                    <CardTitle className="text-2xl text-gray-800">
                       {proyecto.titulo}
                     </CardTitle>
                   </CardHeader>
@@ -125,21 +127,21 @@ export default function Projects() {
 
                     <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                       <div className="flex items-center gap-2 text-sm text-gray-600">
-                        <MapPin className="h-4 w-4 text-blue-600" />
+                        <MapPin className="h-4 w-4 text-gray-500" />
                         <span>{proyecto.ubicacion}</span>
                       </div>
                       <div className="flex items-center gap-2 text-sm text-gray-600">
-                        <Calendar className="h-4 w-4 text-blue-600" />
+                        <Calendar className="h-4 w-4 text-gray-500" />
                         <span>{proyecto.fecha}</span>
                       </div>
                       <div className="flex items-center gap-2 text-sm text-gray-600">
-                        <Users className="h-4 w-4 text-blue-600" />
+                        <Users className="h-4 w-4 text-gray-500" />
                         <span>{proyecto.area}</span>
                       </div>
                     </div>
 
                     <div className="pt-4 flex-1">
-                      <div className="h-64 lg:h-full bg-gray-300 rounded-lg overflow-hidden">
+                      <div className="h-64 lg:h-full bg-gray-200 rounded-lg overflow-hidden border border-gray-200">
                         <iframe
                           width="100%"
                           height="85%"
@@ -156,19 +158,22 @@ export default function Projects() {
             </Card>
           ))}
         </div>
+        </div>
       </section>
 
       {/* Call to Action */}
-      <section className="bg-blue-50 py-16">
+      <section className="bg-gray-50 py-8">
         <div className="container mx-auto px-4 text-center">
           <div className="max-w-2xl mx-auto">
-            <h2 className="text-3xl font-bold mb-4">{t('projects.cta.title')}</h2>
-            <p className="text-gray-600 mb-8">
+            <h2 className="text-2xl md:text-3xl font-bold mb-4 text-gray-800">{t('projects.cta.title')}</h2>
+            <p className="text-gray-600 mb-6">
               {t('projects.cta.subtitle')}
             </p>
-            <Button size="lg" className="bg-blue-600 hover:bg-blue-700">
-              {t('projects.cta.button')}
-            </Button>
+            <Link href="/contacto">
+              <Button size="lg" className="bg-gray-500 hover:bg-gray-600 border-0">
+                {t('projects.cta.button')}
+              </Button>
+            </Link>
           </div>
         </div>
       </section>

@@ -22,21 +22,35 @@ function App() {
       <TooltipProvider>
         <LanguageProvider>
           <Router>
-            <div className="min-h-screen bg-background">
-              <Navigation />
-              
-              <main>
-                <Route path="/" component={Home} />
-                <Route path="/nosotros" component={About} />
-                <Route path="/proyectos" component={Projects} />
-                <Route path="/contacto" component={Contact} />
-                <Route path="/instalaciones/sanitarias" component={InstalacionesTechosPage} />
-                <Route path="/instalaciones/madera" component={InstalacionesMaderaPage} />
-                <Route path="/construccion/agua" component={ConstruccionAguaPage} />
-                <Route path="/construccion/tierra" component={ConstruccionTierraPage} />
-              </main>
-              <Footer />
-            </div>
+            <Route path="/">
+              {/* Home sin navegación ni footer */}
+              <div className="min-h-screen bg-background">
+                <Home />
+              </div>
+            </Route>
+            
+            {/* Todas las demás rutas con navegación y footer */}
+            <Route path="/:rest*">
+              <div className="min-h-screen bg-background">
+                <Navigation />
+                <main>
+                  <Route path="/nosotros" component={About} />
+                  <Route path="/proyectos" component={Projects} />
+                  <Route path="/contacto" component={Contact} />
+                  <Route path="/arquitectura/arquitectonico" component={InstalacionesTechosPage} />
+                  <Route path="/arquitectura/visual" component={InstalacionesMaderaPage} />
+                  <Route path="/estructural/sismorresistente" component={InstalacionesTechosPage} />
+                  <Route path="/estructural/eolica" component={InstalacionesMaderaPage} />
+                  <Route path="/instalaciones/sanitarias" component={InstalacionesTechosPage} />
+                  <Route path="/instalaciones/hidraulicas" component={InstalacionesMaderaPage} />
+                  <Route path="/instalaciones/electricas" component={InstalacionesTechosPage} />
+                  <Route path="/instalaciones/especiales" component={InstalacionesMaderaPage} />
+                  <Route path="/construccion/civil" component={ConstruccionAguaPage} />
+                  <Route path="/construccion/industrial" component={ConstruccionTierraPage} />
+                </main>
+                <Footer />
+              </div>
+            </Route>
             <Toaster />
           </Router>
         </LanguageProvider>

@@ -1,27 +1,47 @@
 import { Link, useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
-import { Building2, Home, Users, Phone, FolderOpen, Hammer, Zap, HardHat, ChevronDown } from "lucide-react";
-import { useState } from "react"; // Añadimos useState para controlar el menú móvil
+import { Building2, Home, Phone, Users, FolderOpen, Zap, HardHat, ChevronDown, Landmark, Pyramid, Globe } from "lucide-react";
+import { useState, useEffect } from "react";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { USFlag, MXFlag } from "@/components/ui/flag-icons";
+import { USFlag, MXFlag, PTFlag, FRFlag, CNFlag } from "@/components/ui/flag-icons";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 
 export function Navigation() {
   const [location] = useLocation();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false); // Estado para el menú móvil
+  const [isScrolled, setIsScrolled] = useState(false);
   const { language, setLanguage, t } = useLanguage();
+
+  // Detectar scroll para cambiar el fondo del header
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop = window.scrollY;
+      const shouldBeScrolled = scrollTop > 20;
+      setIsScrolled(shouldBeScrolled);
+    };
+
+    // Llamar la función una vez para establecer el estado inicial
+    handleScroll();
+    
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   return (
     <>
       {/* Barra de navegación fija */}
-      <nav className="bg-stone-350 shadow-md border-b fixed w-full top-0 z-50">
+      <nav className={`shadow-md border-b border-gray-200 fixed w-full top-0 z-50 transition-all duration-300 ${
+        isScrolled 
+          ? 'bg-white' 
+          : 'bg-white'
+      }`}>
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between h-16">
             {/* Logo */}
             <Link href="/">
               <div className="flex items-center space-x-2 cursor-pointer">
-                <Building2 className="h-8 w-8 text-blue-600" />
-                <span className="text-xl font-bold text-gray-900">Mauro Muñoz y Alvaro May Construcciones</span>
+                <Building2 className="h-8 w-8 text-gray-500" />
+                <span className="text-xl font-bold text-gray-700">Mauro Muñoz y Alvaro May Construcciones</span>
               </div>
             </Link>
 
@@ -36,33 +56,54 @@ export function Navigation() {
                   <span>{t('nav.inicio')}</span>
                 </Button>
               </Link>
-              <Link href="/arquitectura">
-                <Button
-                  variant={location === "/arquitectura" ? "default" : "ghost"}
-                  className="flex items-center space-x-2"
-                >
-                  <Users className="h-4 w-4" />
-                  <span>{t('nav.sobre-mi')}</span>
-                </Button>
-              </Link>
-              {/* <Link href="/nosotros">
-                <Button
-                  variant={location === "/nosotros" ? "default" : "ghost"}
-                  className="flex items-center space-x-2"
-                >
-                  <Users className="h-4 w-4" />
-                  <span>{t('nav.sobre-mi')}</span>
-                </Button>
-              </Link> */}
-              <Link href="/estructural">
-                <Button
-                  variant={location === "/estructural" ? "default" : "ghost"}
-                  className="flex items-center space-x-2"
-                >
-                  <Hammer className="h-4 w-4" />
-                  <span>{t('nav.contacto')}</span>
-                </Button>
-              </Link>
+               <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button
+                    variant={location.includes("/arquitectura") ? "default" : "ghost"}
+                    className="flex items-center space-x-2"
+                  >
+                    <Landmark className="h-4 w-4" />
+                    <span>{t('nav.arquitectura')}</span>
+                    <ChevronDown className="h-4 w-4" />
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent>
+                  <DropdownMenuItem asChild>
+                    <Link href="/arquitectura/arquitectonico">
+                      <span>{t('nav.arquitectura.arquitectonico')}</span>
+                    </Link>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem asChild>
+                    <Link href="/arquitectura/visual">
+                      <span>{t('nav.arquitectura.visual')}</span>
+                    </Link>
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button
+                    variant={location.includes("/estructural") ? "default" : "ghost"}
+                    className="flex items-center space-x-2"
+                  >
+                    <Pyramid className="h-4 w-4" />
+                    <span>{t('nav.estructural')}</span>
+                    <ChevronDown className="h-4 w-4" />
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent>
+                  <DropdownMenuItem asChild>
+                    <Link href="/estructural/sismorresistente">
+                      <span>{t('nav.estructural.sismorresistente')}</span>
+                    </Link>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem asChild>
+                    <Link href="/estructural/eolica">
+                      <span>{t('nav.estructural.eolica')}</span>
+                    </Link>
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
               
               {/* Instalaciones with Dropdown */}
               <DropdownMenu>
@@ -114,17 +155,26 @@ export function Navigation() {
                 </DropdownMenuTrigger>
                 <DropdownMenuContent>
                   <DropdownMenuItem asChild>
-                    <Link href="/construccion/agua">
-                      <span>{t('nav.construccion.agua')}</span>
+                    <Link href="/construccion/civil">
+                      <span>{t('nav.construccion.civil')}</span>
                     </Link>
                   </DropdownMenuItem>
                   <DropdownMenuItem asChild>
-                    <Link href="/construccion/tierra">
-                      <span>{t('nav.construccion.tierra')}</span>
+                    <Link href="/construccion/industrial">
+                      <span>{t('nav.construccion.industrial')}</span>
                     </Link>
                   </DropdownMenuItem>
                 </DropdownMenuContent>
               </DropdownMenu>
+              <Link href="/nosotros">
+                <Button
+                  variant={location === "/nosotros" ? "default" : "ghost"}
+                  className="flex items-center space-x-2"
+                >
+                  <Users className="h-4 w-4" />
+                  <span>{t('nav.sobre-nosotros')}</span>
+                </Button>
+              </Link>
               <Link href="/proyectos">
                 <Button
                   variant={location === "/proyectos" ? "default" : "ghost"}
@@ -134,7 +184,7 @@ export function Navigation() {
                   <span>{t('nav.proyectos')}</span>
                 </Button>
               </Link>
-              {/* <Link href="/contacto">
+              <Link href="/contacto">
                 <Button
                   variant={location === "/contacto" ? "default" : "ghost"}
                   className="flex items-center space-x-2"
@@ -142,21 +192,59 @@ export function Navigation() {
                   <Phone className="h-4 w-4" />
                   <span>{t('nav.contacto')}</span>
                 </Button>
-              </Link> */}
+              </Link>
               
-              {/* Language Toggle */}
-              <Button
-                variant="ghost"
-                size="sm"
-                onClick={() => setLanguage(language === 'es' ? 'en' : 'es')}
-                className="flex items-center space-x-2"
-              >
-                {language === 'es' ? (
-                  <MXFlag className="rounded-sm" width={20} height={14} />
-                ) : (
-                  <USFlag className="rounded-sm" width={20} height={14} />
-                )}
-              </Button>
+              {/* Language Selector Dropdown */}
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    className="flex items-center space-x-2"
+                  >
+                    <Globe className="h-4 w-4" />
+                    <span>{t(`language.${language}`)}</span>
+                    <ChevronDown className="h-4 w-4" />
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent>
+                  <DropdownMenuItem 
+                    onClick={() => setLanguage('es')}
+                    className="flex items-center space-x-2"
+                  >
+                    <MXFlag className="rounded-sm" width={20} height={14} />
+                    <span>{t('language.es')}</span>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem 
+                    onClick={() => setLanguage('en')}
+                    className="flex items-center space-x-2"
+                  >
+                    <USFlag className="rounded-sm" width={20} height={14} />
+                    <span>{t('language.en')}</span>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem 
+                    onClick={() => setLanguage('pt')}
+                    className="flex items-center space-x-2"
+                  >
+                    <PTFlag className="rounded-sm" width={20} height={14} />
+                    <span>{t('language.pt')}</span>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem 
+                    onClick={() => setLanguage('fr')}
+                    className="flex items-center space-x-2"
+                  >
+                    <FRFlag className="rounded-sm" width={20} height={14} />
+                    <span>{t('language.fr')}</span>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem 
+                    onClick={() => setLanguage('cn')}
+                    className="flex items-center space-x-2"
+                  >
+                    <CNFlag className="rounded-sm" width={20} height={14} />
+                    <span>{t('language.cn')}</span>
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
             </div>
 
             {/* Mobile menu button */}
@@ -175,7 +263,7 @@ export function Navigation() {
 
           {/* Mobile menu (condicional) */}
           {mobileMenuOpen && (
-            <div className="md:hidden pb-4 space-y-2 bg-stone-200">
+            <div className="md:hidden pb-4 space-y-2 bg-white border-t border-gray-200">
               <Link href="/" onClick={() => setMobileMenuOpen(false)}>
                 <Button
                   variant={location === "/" ? "default" : "ghost"}
@@ -185,33 +273,71 @@ export function Navigation() {
                   {t('nav.inicio')}
                 </Button>
               </Link>
-              <Link href="/arquitectura" onClick={() => setMobileMenuOpen(false)}>
-                <Button
-                  variant={location === "/arquitectura" ? "default" : "ghost"}
-                  className="w-full justify-start"
-                >
-                  <Users className="h-4 w-4 mr-2" />
-                  {t('nav.sobre-mi')}
-                </Button>
-              </Link> 
-              {/* <Link href="/nosotros" onClick={() => setMobileMenuOpen(false)}>
+              <Link href="/nosotros" onClick={() => setMobileMenuOpen(false)}>
                 <Button
                   variant={location === "/nosotros" ? "default" : "ghost"}
                   className="w-full justify-start"
                 >
                   <Users className="h-4 w-4 mr-2" />
-                  {t('nav.sobre-mi')}
-                </Button>
-              </Link> */}
-              <Link href="/estructural" onClick={() => setMobileMenuOpen(false)}>
-                <Button
-                  variant={location === "/estructural" ? "default" : "ghost"}
-                  className="w-full justify-start"
-                >
-                  <Hammer className="h-4 w-4 mr-2" />
-                  {t('nav.contacto')}
+                  {t('nav.sobre-nosotros')}
                 </Button>
               </Link>
+
+              <div className="space-y-1">
+                <Button
+                  variant={location.includes("/arquitectura") ? "default" : "ghost"}
+                  className="w-full justify-start text-sm font-medium"
+                >
+                  <Landmark className="h-4 w-4 mr-2" />
+                  {t('nav.arquitectura')}
+                </Button>
+                <div className="pl-6 space-y-1">
+                  <Link href="/arquitectura/arquitectonico" onClick={() => setMobileMenuOpen(false)}>
+                    <Button
+                      variant="ghost"
+                      className="w-full justify-start text-sm"
+                    >
+                      {t('nav.arquitectura.arquitectonico')}
+                    </Button>
+                  </Link>
+                  <Link href="/arquitectura/visual" onClick={() => setMobileMenuOpen(false)}>
+                    <Button
+                      variant="ghost"
+                      className="w-full justify-start text-sm"
+                    >
+                      {t('nav.arquitectura.visual')}
+                    </Button>
+                  </Link>
+                </div>
+              </div>
+
+              <div className="space-y-1">
+                <Button
+                  variant={location.includes("/estructural") ? "default" : "ghost"}
+                  className="w-full justify-start text-sm font-medium"
+                >
+                  <Pyramid className="h-4 w-4 mr-2" />
+                  {t('nav.estructural')}
+                </Button>
+                <div className="pl-6 space-y-1">
+                  <Link href="/estructural/sismorresistente" onClick={() => setMobileMenuOpen(false)}>
+                    <Button
+                      variant="ghost"
+                      className="w-full justify-start text-sm"
+                    >
+                      {t('nav.estructural.sismorresistente')}
+                    </Button>
+                  </Link>
+                  <Link href="/estructural/eolica" onClick={() => setMobileMenuOpen(false)}>
+                    <Button
+                      variant="ghost"
+                      className="w-full justify-start text-sm"
+                    >
+                      {t('nav.estructural.eolica')}
+                    </Button>
+                  </Link>
+                </div>
+              </div>
               
               {/* Instalaciones Mobile */}
               <div className="space-y-1">
@@ -268,20 +394,20 @@ export function Navigation() {
                   {t('nav.construccion')}
                 </Button>
                 <div className="pl-6 space-y-1">
-                  <Link href="/construccion/agua" onClick={() => setMobileMenuOpen(false)}>
+                  <Link href="/construccion/civil" onClick={() => setMobileMenuOpen(false)}>
                     <Button
                       variant="ghost"
                       className="w-full justify-start text-sm"
                     >
-                      {t('nav.construccion.agua')}
+                      {t('nav.construccion.civil')}
                     </Button>
                   </Link>
-                  <Link href="/construccion/tierra" onClick={() => setMobileMenuOpen(false)}>
+                  <Link href="/construccion/industrial" onClick={() => setMobileMenuOpen(false)}>
                     <Button
                       variant="ghost"
                       className="w-full justify-start text-sm"
                     >
-                      {t('nav.construccion.tierra')}
+                      {t('nav.construccion.industrial')}
                     </Button>
                   </Link>
                 </div>
@@ -295,7 +421,7 @@ export function Navigation() {
                   {t('nav.proyectos')}
                 </Button>
               </Link>
-              {/* <Link href="/contacto" onClick={() => setMobileMenuOpen(false)}>
+              <Link href="/contacto" onClick={() => setMobileMenuOpen(false)}>
                 <Button
                   variant={location === "/contacto" ? "default" : "ghost"}
                   className="w-full justify-start"
@@ -303,26 +429,60 @@ export function Navigation() {
                   <Phone className="h-4 w-4 mr-2" />
                   {t('nav.contacto')}
                 </Button>
-              </Link> */}
+              </Link>
               
-              {/* Language Toggle Mobile */}
-              <Button
-                variant="ghost"
-                onClick={() => setLanguage(language === 'es' ? 'en' : 'es')}
-                className="w-full justify-start"
-              >
-                {language === 'es' ? (
-                  <>
-                    <MXFlag className="rounded-sm mr-2" width={20} height={14} />
-                    Español
-                  </>
-                ) : (
-                  <>
-                    <USFlag className="rounded-sm mr-2" width={20} height={14} />
-                    English
-                  </>
-                )}
-              </Button>
+              {/* Language Selector Mobile */}
+              <div className="space-y-1">
+                <Button
+                  variant="ghost"
+                  className="w-full justify-start text-sm font-medium"
+                >
+                  <Globe className="h-4 w-4 mr-2" />
+                  {t('nav.idioma') || 'Idioma'}
+                </Button>
+                <div className="pl-6 space-y-1">
+                  <Button
+                    variant="ghost"
+                    onClick={() => setLanguage('es')}
+                    className="w-full justify-start text-sm"
+                  >
+                    <MXFlag className="rounded-sm mr-2" width={16} height={12} />
+                    {t('language.es')}
+                  </Button>
+                  <Button
+                    variant="ghost"
+                    onClick={() => setLanguage('en')}
+                    className="w-full justify-start text-sm"
+                  >
+                    <USFlag className="rounded-sm mr-2" width={16} height={12} />
+                    {t('language.en')}
+                  </Button>
+                  <Button
+                    variant="ghost"
+                    onClick={() => setLanguage('pt')}
+                    className="w-full justify-start text-sm"
+                  >
+                    <PTFlag className="rounded-sm mr-2" width={16} height={12} />
+                    {t('language.pt')}
+                  </Button>
+                  <Button
+                    variant="ghost"
+                    onClick={() => setLanguage('fr')}
+                    className="w-full justify-start text-sm"
+                  >
+                    <FRFlag className="rounded-sm mr-2" width={16} height={12} />
+                    {t('language.fr')}
+                  </Button>
+                  <Button
+                    variant="ghost"
+                    onClick={() => setLanguage('cn')}
+                    className="w-full justify-start text-sm"
+                  >
+                    <CNFlag className="rounded-sm mr-2" width={16} height={12} />
+                    {t('language.cn')}
+                  </Button>
+                </div>
+              </div>
             </div>
           )}
         </div>
