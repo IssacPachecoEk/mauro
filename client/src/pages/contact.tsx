@@ -75,9 +75,9 @@ export default function Contact() {
 
       {/* Contact Form and Info */}
       <section className="container mx-auto px-4">
-        <div className="grid lg:grid-cols-2 gap-12">
+        <div className="grid lg:grid-cols-2 gap-12 items-start">
           {/* Contact Form */}
-          <Card>
+          <Card className="h-full">
             <CardHeader>
               <CardTitle className="text-2xl">{t('contact.form.title')}</CardTitle>
               <p className="text-gray-600">
@@ -185,8 +185,8 @@ export default function Contact() {
           </Card>
 
           {/* Contact Information */}
-          <div className="space-y-6">
-            <Card>
+          <div className="space-y-6 h-full flex flex-col">
+            <Card className="flex-1">
               <CardHeader>
                 <CardTitle className="flex items-center gap-3">
                   <Phone className="h-6 w-6 text-gray-600" />
@@ -199,7 +199,7 @@ export default function Contact() {
                   <div>
                     <h4 className="font-semibold">{t('contact.info.phone')}</h4>
                     <p className="text-gray-600">+52 55 1234 5678</p>
-                    <p className="text-sm text-gray-500">{t('contact.info.phone.schedule')}</p>
+                    {/* <p className="text-sm text-gray-500">{t('contact.info.phone.schedule')}</p> */}
                   </div>
                 </div>
 
@@ -236,7 +236,7 @@ export default function Contact() {
               </CardContent>
             </Card>
 
-            <Card className="bg-gray-50 border-gray-200">
+            {/* <Card className="bg-gray-50 border-gray-200">
               <CardContent className="pt-6">
                 <h3 className="text-lg font-semibold mb-3">{t('contact.why.title')}</h3>
                 <ul className="space-y-2 text-sm text-gray-600">
@@ -262,9 +262,9 @@ export default function Contact() {
                   </li>
                 </ul>
               </CardContent>
-            </Card>
+            </Card> */}
 
-            <Card className="bg-green-50 border-green-200">
+            {/* <Card className="bg-green-50 border-green-200">
               <CardContent className="pt-6 text-center">
                 <h3 className="text-lg font-semibold mb-2 text-green-800">
                   {t('contact.consultation.title')}
@@ -276,7 +276,7 @@ export default function Contact() {
                   {t('contact.consultation.button')}
                 </Button>
               </CardContent>
-            </Card>
+            </Card> */}
           </div>
         </div>
       </section>

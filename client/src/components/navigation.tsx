@@ -36,17 +36,18 @@ export function Navigation() {
           : 'bg-white'
       }`}>
         <div className="container mx-auto px-4">
-          <div className="flex items-center justify-between h-16">
+          <div className="flex items-center justify-center h-16 relative">
             {/* Logo */}
-            <Link href="/">
-              <div className="flex items-center space-x-2 cursor-pointer">
+            {/* <Link href="/">
+              <div className="flex items-center space-x-2 cursor-pointer absolute left-0">
                 <Building2 className="h-8 w-8 text-gray-500" />
-                <span className="text-xl font-bold text-gray-700">Mauro Muñoz y Alvaro May Construcciones</span>
+                <span className="hidden lg:block text-xl font-bold text-gray-700">Mauro Muñoz y Alvaro May</span>
+                <span className="lg:hidden text-lg font-bold text-gray-700">MM&AM</span>
               </div>
-            </Link>
+            </Link> */}
 
-            {/* Navigation Links (desktop) */}
-            <div className="hidden md:flex space-x-8 items-center">
+            {/* Navigation Links (desktop) - Centrados */}
+            <div className="hidden md:flex space-x-6 items-center">
               <Link href="/">
                 <Button
                   variant={location === "/" ? "default" : "ghost"}
@@ -56,7 +57,7 @@ export function Navigation() {
                   <span>{t('nav.inicio')}</span>
                 </Button>
               </Link>
-               <DropdownMenu>
+               {/* <DropdownMenu>
                 <DropdownMenuTrigger asChild>
                   <Button
                     variant={location.includes("/arquitectura") ? "default" : "ghost"}
@@ -79,8 +80,8 @@ export function Navigation() {
                     </Link>
                   </DropdownMenuItem>
                 </DropdownMenuContent>
-              </DropdownMenu>
-              <DropdownMenu>
+              </DropdownMenu> */}
+              {/* <DropdownMenu>
                 <DropdownMenuTrigger asChild>
                   <Button
                     variant={location.includes("/estructural") ? "default" : "ghost"}
@@ -103,10 +104,10 @@ export function Navigation() {
                     </Link>
                   </DropdownMenuItem>
                 </DropdownMenuContent>
-              </DropdownMenu>
+              </DropdownMenu> */}
               
               {/* Instalaciones with Dropdown */}
-              <DropdownMenu>
+              {/* <DropdownMenu>
                 <DropdownMenuTrigger asChild>
                   <Button
                     variant={location.includes("/instalaciones") ? "default" : "ghost"}
@@ -139,10 +140,10 @@ export function Navigation() {
                     </Link>
                   </DropdownMenuItem>
                 </DropdownMenuContent>
-              </DropdownMenu>
+              </DropdownMenu> */}
               
               {/* Construccion with Dropdown */}
-              <DropdownMenu>
+              {/* <DropdownMenu>
                 <DropdownMenuTrigger asChild>
                   <Button
                     variant={location.includes("/construccion") ? "default" : "ghost"}
@@ -165,7 +166,7 @@ export function Navigation() {
                     </Link>
                   </DropdownMenuItem>
                 </DropdownMenuContent>
-              </DropdownMenu>
+              </DropdownMenu> */}
               <Link href="/nosotros">
                 <Button
                   variant={location === "/nosotros" ? "default" : "ghost"}
@@ -193,8 +194,10 @@ export function Navigation() {
                   <span>{t('nav.contacto')}</span>
                 </Button>
               </Link>
+            </div>
               
-              {/* Language Selector Dropdown */}
+            {/* Language Selector Dropdown - Posicionado a la derecha */}
+            <div className="absolute right-0">
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
                   <Button
@@ -203,7 +206,7 @@ export function Navigation() {
                     className="flex items-center space-x-2"
                   >
                     <Globe className="h-4 w-4" />
-                    <span>{t(`language.${language}`)}</span>
+                    <span className="hidden sm:inline">{t(`language.${language}`)}</span>
                     <ChevronDown className="h-4 w-4" />
                   </Button>
                 </DropdownMenuTrigger>
@@ -248,7 +251,7 @@ export function Navigation() {
             </div>
 
             {/* Mobile menu button */}
-            <div className="md:hidden">
+            <div className="md:hidden absolute right-0">
               <Button 
                 variant="ghost" 
                 size="sm"

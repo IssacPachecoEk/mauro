@@ -8,10 +8,9 @@ import Home from "@/pages/home";
 import About from "@/pages/about";
 import Contact from "@/pages/contact";
 import Projects from "@/pages/projects";
-import { InstalacionesTechosPage } from "@/pages/instalaciones-techos";
-import { InstalacionesMaderaPage } from "@/pages/instalaciones-madera";
-import { ConstruccionAguaPage } from "@/pages/construccion-agua";
-import { ConstruccionTierraPage } from "@/pages/construccion-tierra";
+import ProjectDetail from "@/pages/project-detail";
+import { ServiceTemplate } from "@/components/ServiceTemplate";
+import { serviceConfigurations } from "@/data/serviceConfigurations";
 import { Navigation } from "@/components/navigation";
 import Footer from "@/components/Footer";
 import { LanguageProvider } from "@/contexts/LanguageContext";
@@ -30,29 +29,147 @@ function App() {
             </Route>
             
             {/* Todas las demás rutas con navegación y footer */}
-            <Route path="/:rest*">
+            <Route path="/nosotros">
               <div className="min-h-screen bg-background">
                 <Navigation />
                 <main>
-                  <Route path="/nosotros" component={About} />
-                  <Route path="/proyectos" component={Projects} />
-                  <Route path="/contacto" component={Contact} />
-                  <Route path="/arquitectura/arquitectonico" component={InstalacionesTechosPage} />
-                  <Route path="/arquitectura/visual" component={InstalacionesMaderaPage} />
-                  <Route path="/estructural/sismorresistente" component={InstalacionesTechosPage} />
-                  <Route path="/estructural/eolica" component={InstalacionesMaderaPage} />
-                  <Route path="/instalaciones/sanitarias" component={InstalacionesTechosPage} />
-                  <Route path="/instalaciones/hidraulicas" component={InstalacionesMaderaPage} />
-                  <Route path="/instalaciones/electricas" component={InstalacionesTechosPage} />
-                  <Route path="/instalaciones/especiales" component={InstalacionesMaderaPage} />
-                  <Route path="/construccion/civil" component={ConstruccionAguaPage} />
-                  <Route path="/construccion/industrial" component={ConstruccionTierraPage} />
+                  <About />
                 </main>
                 <Footer />
               </div>
             </Route>
-            <Toaster />
+            
+            <Route path="/proyectos">
+              <div className="min-h-screen bg-background">
+                <Navigation />
+                <main>
+                  <Projects />
+                </main>
+                <Footer />
+              </div>
+            </Route>
+            
+            <Route path="/proyecto/:id">
+              <div className="min-h-screen bg-background">
+                <Navigation />
+                <main>
+                  <ProjectDetail />
+                </main>
+                <Footer />
+              </div>
+            </Route>
+            
+            <Route path="/contacto">
+              <div className="min-h-screen bg-background">
+                <Navigation />
+                <main>
+                  <Contact />
+                </main>
+                <Footer />
+              </div>
+            </Route>
+            
+            <Route path="/arquitectura/arquitectonico">
+              <div className="min-h-screen bg-background">
+                <Navigation />
+                <main>
+                  <ServiceTemplate {...serviceConfigurations.arquitectonico} />
+                </main>
+                <Footer />
+              </div>
+            </Route>
+            
+            <Route path="/arquitectura/visual">
+              <div className="min-h-screen bg-background">
+                <Navigation />
+                <main>
+                  <ServiceTemplate {...serviceConfigurations.visual} />
+                </main>
+                <Footer />
+              </div>
+            </Route>
+            
+            <Route path="/estructural/sismorresistente">
+              <div className="min-h-screen bg-background">
+                <Navigation />
+                <main>
+                  <ServiceTemplate {...serviceConfigurations.sismorresistente} />
+                </main>
+                <Footer />
+              </div>
+            </Route>
+            
+            <Route path="/estructural/eolica">
+              <div className="min-h-screen bg-background">
+                <Navigation />
+                <main>
+                  <ServiceTemplate {...serviceConfigurations.eolica} />
+                </main>
+                <Footer />
+              </div>
+            </Route>
+            
+            <Route path="/instalaciones/sanitarias">
+              <div className="min-h-screen bg-background">
+                <Navigation />
+                <main>
+                  <ServiceTemplate {...serviceConfigurations.sanitarias} />
+                </main>
+                <Footer />
+              </div>
+            </Route>
+            
+            <Route path="/instalaciones/hidraulicas">
+              <div className="min-h-screen bg-background">
+                <Navigation />
+                <main>
+                  <ServiceTemplate {...serviceConfigurations.hidraulicas} />
+                </main>
+                <Footer />
+              </div>
+            </Route>
+            
+            <Route path="/instalaciones/electricas">
+              <div className="min-h-screen bg-background">
+                <Navigation />
+                <main>
+                  <ServiceTemplate {...serviceConfigurations.electricas} />
+                </main>
+                <Footer />
+              </div>
+            </Route>
+            
+            <Route path="/instalaciones/especiales">
+              <div className="min-h-screen bg-background">
+                <Navigation />
+                <main>
+                  <ServiceTemplate {...serviceConfigurations.especiales} />
+                </main>
+                <Footer />
+              </div>
+            </Route>
+            
+            <Route path="/construccion/civil">
+              <div className="min-h-screen bg-background">
+                <Navigation />
+                <main>
+                  <ServiceTemplate {...serviceConfigurations.civil} />
+                </main>
+                <Footer />
+              </div>
+            </Route>
+            
+            <Route path="/construccion/industrial">
+              <div className="min-h-screen bg-background">
+                <Navigation />
+                <main>
+                  <ServiceTemplate {...serviceConfigurations.industrial} />
+                </main>
+                <Footer />
+              </div>
+            </Route>
           </Router>
+          <Toaster />
         </LanguageProvider>
       </TooltipProvider>
     </QueryClientProvider>

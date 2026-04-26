@@ -128,6 +128,7 @@ const translations = {
     'projects.cta.title': '¿Tienes un proyecto en mente?',
     'projects.cta.subtitle': 'Me encantaría conocer tu idea y ayudarte a hacerla realidad con la misma calidad y dedicación',
     'projects.cta.button': 'Solicitar Presupuesto Gratuito',
+    'projects.moreInfo': 'Más Información',
     
     // Project Data
     'project.casa-moderna.title': 'Casa Residencial Moderna',
@@ -178,8 +179,8 @@ const translations = {
     'contact.consultation.title': '¡Consulta Gratuita!',
     'contact.consultation.subtitle': 'Agenda una cita para discutir tu proyecto sin ningún costo',
     'contact.consultation.button': 'Agendar Cita',
-    'contact.location.title': 'Mi Ubicación',
-    'contact.location.subtitle': 'Visítanos en mi oficina central',
+    'contact.location.title': 'Nuestra Ubicación',
+    'contact.location.subtitle': 'Visítanos en nuestra oficina central',
     
     // Footer
     'footer.text': 'Elaborado por Issac Nolberto Pacheco Ek',
@@ -211,6 +212,9 @@ const translations = {
     'language.pt': 'Portuguese',
     'language.fr': 'French',
     'language.cn': 'Chinese',
+    
+    // Projects
+    'projects.moreInfo': 'More Information',
   },
   pt: {
     // Navigation
@@ -239,6 +243,9 @@ const translations = {
     'language.pt': 'Português',
     'language.fr': 'Francês',
     'language.cn': 'Chinês',
+    
+    // Projects
+    'projects.moreInfo': 'Mais Informações',
     
     // Footer
     'footer.text': 'Criado por Issac Nolberto Pacheco Ek',

@@ -1,6 +1,6 @@
 import { useLanguage } from "@/contexts/LanguageContext";
 
-export function InstalacionesTechosPage() {
+export default function InstalacionesTechos() {
   const { t } = useLanguage();
 
   return (
@@ -9,7 +9,7 @@ export function InstalacionesTechosPage() {
       <div className="bg-gray-500 text-white py-20">
         <div className="container mx-auto px-4 text-center">
           <h1 className="text-4xl md:text-6xl font-bold mb-6">
-            {t('nav.instalaciones.hidraulicas')}
+            Instalaciones de Techos
           </h1>
           <p className="text-xl md:text-2xl mb-8">
             Especialistas en instalación y reparación de todo tipo de techos
@@ -55,7 +55,7 @@ export function InstalacionesTechosPage() {
               <div className="space-y-4">
                 <div>
                   <h4 className="font-semibold">Experiencia Comprobada</h4>
-                  <p className="text-gray-600">Más de 6 meses especializándonos en techados</p>
+                  <p className="text-gray-600">Más de 15 años especializándonos en techados</p>
                 </div>
                 <div>
                   <h4 className="font-semibold">Materiales de Calidad</h4>

@@ -116,9 +116,14 @@ export default function Projects() {
                 {/* Información del proyecto */}
                 <div className={`${index % 2 === 1 ? 'lg:col-start-1' : ''}`}>
                   <CardHeader>
-                    <CardTitle className="text-2xl text-gray-800">
+                    <CardTitle className="text-2xl text-gray-800 mb-3">
                       {proyecto.titulo}
                     </CardTitle>
+                    <Link href={`/proyecto/${proyecto.id}`}>
+                      <Button variant="outline" size="sm" className="w-fit">
+                        {t('projects.moreInfo')} 
+                      </Button>
+                    </Link>
                   </CardHeader>
                   <CardContent className="space-y-6 h-full flex flex-col">
                     <p className="text-gray-600 leading-relaxed">

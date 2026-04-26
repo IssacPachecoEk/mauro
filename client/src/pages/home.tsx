@@ -55,16 +55,16 @@ export default function Home() {
         {/* Content */}
         <div className="relative z-20 text-center text-white px-4 max-w-2xl mx-auto">
           {/* Main Title */}
-          <h1 className="text-6xl font-light tracking-[0.3em] mb-8">
+          <h1 className="text-2xl font-light tracking-[0.3em] mb-6">
             NOMBRE EMPRESA
           </h1>
           
           {/* Subtitle */}
-          <p className="text-lg font-light tracking-[0.2em] mb-4 uppercase">
+          <p className="text-sm font-light tracking-[0.2em] mb-3 uppercase">
             CONSTRUCCIONES Y ARQUITECTURA
           </p>
           
-          <p className="text-base font-light tracking-[0.15em] mb-16 uppercase">
+          <p className="text-sm font-light tracking-[0.15em] mb-12 uppercase">
             MAURO MUÑOZ Y ÁLVARO MAY
           </p>
           
@@ -74,24 +74,24 @@ export default function Home() {
             <div className="space-y-2">
               <button
                 onClick={() => toggleSection('arquitectura')}
-                className="w-full text-center group cursor-pointer py-3 px-6 bg-gray-600 rounded-md"
+                className="w-full text-center group cursor-pointer py-2 px-4 bg-gray-600 rounded-md border-2 border-white"
               >
-                <p className="text-xl font-light tracking-[0.2em] uppercase">
+                <p className="text-sm font-light tracking-[0.2em] uppercase">
                   ARQUITECTURA
                 </p>
               </button>
               {expandedSections.arquitectura && (
                 <div className="flex flex-col items-center space-y-1 pt-2">
                   <Link href="/arquitectura/arquitectonico">
-                    <div className="group cursor-pointer py-1">
-                      <p className="text-base font-light tracking-[0.15em] uppercase">
+                    <div className="group bg-gray-600 rounded-md border-2 border-white py-2 px-4 cursor-pointer">
+                      <p className="text-sm font-light tracking-[0.15em] uppercase">
                         ARQUITECTÓNICO
                       </p>
                     </div>
                   </Link>
                   <Link href="/arquitectura/visual">
-                    <div className="group cursor-pointer py-1">
-                      <p className="text-base font-light tracking-[0.15em] uppercase">
+                    <div className="group bg-gray-600 rounded-md border-2 border-white py-2 px-4 cursor-pointer">
+                      <p className="text-sm font-light tracking-[0.15em] uppercase">
                         VISUAL
                       </p>
                     </div>
@@ -104,24 +104,24 @@ export default function Home() {
             <div className="space-y-2">
               <button
                 onClick={() => toggleSection('estructural')}
-                className="w-full text-center group cursor-pointer py-3 px-6 bg-gray-600 rounded-md"
+                className="w-full text-center group cursor-pointer py-2 px-4 bg-gray-600 rounded-md border-2 border-white"
               >
-                <p className="text-xl font-light tracking-[0.2em] uppercase">
+                <p className="text-sm font-light tracking-[0.2em] uppercase">
                   ESTRUCTURAL
                 </p>
               </button>
               {expandedSections.estructural && (
                 <div className="flex flex-col items-center space-y-1 pt-2">
                   <Link href="/estructural/sismorresistente">
-                    <div className="group cursor-pointer py-1">
-                      <p className="text-base font-light tracking-[0.15em] uppercase">
+                    <div className="group bg-gray-600 rounded-md border-2 border-white py-2 px-4 cursor-pointer">
+                      <p className="text-sm font-light tracking-[0.15em] uppercase">
                         SISMORRESISTENTE
                       </p>
                     </div>
                   </Link>
                   <Link href="/estructural/eolica">
-                    <div className="group cursor-pointer py-1">
-                      <p className="text-base font-light tracking-[0.15em] uppercase">
+                    <div className="group bg-gray-600 rounded-md border-2 border-white py-2 px-4 cursor-pointer">
+                      <p className="text-sm font-light tracking-[0.15em] uppercase">
                         EÓLICA
                       </p>
                     </div>
@@ -134,38 +134,38 @@ export default function Home() {
             <div className="space-y-2">
               <button
                 onClick={() => toggleSection('instalaciones')}
-                className="w-full text-center group cursor-pointer py-3 px-6 bg-gray-600 rounded-md"
+                className="w-full text-center group cursor-pointer py-2 px-4 bg-gray-600 rounded-md border-2 border-white"
               >
-                <p className="text-xl font-light tracking-[0.2em] uppercase">
+                <p className="text-sm font-light tracking-[0.2em] uppercase">
                   INSTALACIONES
                 </p>
               </button>
               {expandedSections.instalaciones && (
                 <div className="flex flex-col items-center space-y-1 pt-2">
                   <Link href="/instalaciones/sanitarias">
-                    <div className="group cursor-pointer py-1">
-                      <p className="text-base font-light tracking-[0.15em] uppercase">
+                    <div className="group bg-gray-600 rounded-md border-2 border-white py-2 px-4 cursor-pointer">
+                      <p className="text-sm font-light tracking-[0.15em] uppercase">
                         SANITARIAS
                       </p>
                     </div>
                   </Link>
                   <Link href="/instalaciones/hidraulicas">
-                    <div className="group cursor-pointer py-1">
-                      <p className="text-base font-light tracking-[0.15em] uppercase">
+                    <div className="group bg-gray-600 rounded-md border-2 border-white py-2 px-4 cursor-pointer">
+                      <p className="text-sm font-light tracking-[0.15em] uppercase">
                         HIDRÁULICAS
                       </p>
                     </div>
                   </Link>
                   <Link href="/instalaciones/electricas">
-                    <div className="group cursor-pointer py-1">
-                      <p className="text-base font-light tracking-[0.15em] uppercase">
+                    <div className="group bg-gray-600 rounded-md border-2 border-white py-2 px-4 cursor-pointer">
+                      <p className="text-sm font-light tracking-[0.15em] uppercase">
                         ELÉCTRICAS
                       </p>
                     </div>
                   </Link>
                   <Link href="/instalaciones/especiales">
-                    <div className="group cursor-pointer py-1">
-                      <p className="text-base font-light tracking-[0.15em] uppercase">
+                    <div className="group bg-gray-600 rounded-md border-2 border-white py-2 px-4 cursor-pointer">
+                      <p className="text-sm font-light tracking-[0.15em] uppercase">
                         ESPECIALES
                       </p>
                     </div>
@@ -178,24 +178,24 @@ export default function Home() {
             <div className="space-y-2">
               <button
                 onClick={() => toggleSection('construccion')}
-                className="w-full text-center group cursor-pointer py-3 px-6 bg-gray-600 rounded-md"
+                className="w-full text-center group cursor-pointer py-2 px-4 bg-gray-600 rounded-md border-2 border-white"
               >
-                <p className="text-xl font-light tracking-[0.2em] uppercase">
+                <p className="text-sm font-light tracking-[0.2em] uppercase">
                   CONSTRUCCIÓN
                 </p>
               </button>
               {expandedSections.construccion && (
                 <div className="flex flex-col items-center space-y-1 pt-2">
                   <Link href="/construccion/civil">
-                    <div className="group cursor-pointer py-1">
-                      <p className="text-base font-light tracking-[0.15em] uppercase">
+                    <div className="group bg-gray-600 rounded-md border-2 border-white py-2 px-4 cursor-pointer">
+                      <p className="text-sm font-light tracking-[0.15em] uppercase">
                         CIVIL
                       </p>
                     </div>
                   </Link>
                   <Link href="/construccion/industrial">
-                    <div className="group cursor-pointer py-1">
-                      <p className="text-base font-light tracking-[0.15em] uppercase">
+                    <div className="group bg-gray-600 rounded-md border-2 border-white py-2 px-4 cursor-pointer">
+                      <p className="text-sm font-light tracking-[0.15em] uppercase">
                         INDUSTRIAL
                       </p>
                     </div>
@@ -205,10 +205,10 @@ export default function Home() {
             </div>
 
             {/* Sobre nosotros */}
-            <div className="space-y-2">
+            {/* <div className="space-y-2">
               <Link href="/nosotros">
-                <div className="w-full text-center group cursor-pointer py-3 px-6 bg-gray-600 rounded-md">
-                  <p className="text-xl font-light tracking-[0.2em] uppercase">
+                <div className="w-full text-center group cursor-pointer py-3 px-6 bg-gray-600 rounded-md border-2 border-white">
+                  <p className="text-sm font-light tracking-[0.2em] uppercase">
                     SOBRE NOSOTROS
                   </p>
                 </div>
@@ -218,8 +218,8 @@ export default function Home() {
             {/* Proyectos */}
             <div className="space-y-2">
               <Link href="/proyectos">
-                <div className="w-full text-center group cursor-pointer py-3 px-6 bg-gray-600 rounded-md">
-                  <p className="text-xl font-light tracking-[0.2em] uppercase">
+                <div className="w-full text-center group cursor-pointer py-3 px-6 bg-gray-600 rounded-md border-2 border-white">
+                  <p className="text-sm font-light tracking-[0.2em] uppercase">
                     PROYECTOS
                   </p>
                 </div>
@@ -271,7 +271,7 @@ export default function Home() {
                 <Link href="/">
                   <Button
                     variant="ghost"
-                    className={`${isScrolled ? 'text-gray-800' : 'text-white'} font-light tracking-wider uppercase transition-colors duration-300`}
+                    className={`${isScrolled ? 'text-gray-800' : 'text-white'} font-light tracking-wider uppercase transition-colors duration-300 border-2 border-white px-4 py-2`}
                   >
                     INICIO
                   </Button>
@@ -282,7 +282,7 @@ export default function Home() {
                   <DropdownMenuTrigger asChild>
                     <Button
                       variant="ghost"
-                      className={`${isScrolled ? 'text-gray-800' : 'text-white'} font-light tracking-wider uppercase flex items-center space-x-1 transition-colors duration-300`}
+                      className={`${isScrolled ? 'text-gray-800' : 'text-white'} font-light tracking-wider uppercase flex items-center space-x-1 transition-colors duration-300 border-2 border-white px-4 py-2`}
                     >
                       <span>ARQUITECTURA</span>
                       <ChevronDown className="h-4 w-4" />
@@ -307,7 +307,7 @@ export default function Home() {
                   <DropdownMenuTrigger asChild>
                     <Button
                       variant="ghost"
-                      className={`${isScrolled ? 'text-gray-800' : 'text-white'} font-light tracking-wider uppercase flex items-center space-x-1 transition-colors duration-300`}
+                      className={`${isScrolled ? 'text-gray-800' : 'text-white'} font-light tracking-wider uppercase flex items-center space-x-1 transition-colors duration-300 border-2 border-white px-4 py-2`}
                     >
                       <span>ESTRUCTURAL</span>
                       <ChevronDown className="h-4 w-4" />
@@ -332,7 +332,7 @@ export default function Home() {
                   <DropdownMenuTrigger asChild>
                     <Button
                       variant="ghost"
-                      className={`${isScrolled ? 'text-gray-800' : 'text-white'} font-light tracking-wider uppercase flex items-center space-x-1 transition-colors duration-300`}
+                      className={`${isScrolled ? 'text-gray-800' : 'text-white'} font-light tracking-wider uppercase flex items-center space-x-1 transition-colors duration-300 border-2 border-white px-4 py-2`}
                     >
                       <span>INSTALACIONES</span>
                       <ChevronDown className="h-4 w-4" />
@@ -367,7 +367,7 @@ export default function Home() {
                   <DropdownMenuTrigger asChild>
                     <Button
                       variant="ghost"
-                      className={`${isScrolled ? 'text-gray-800' : 'text-white'} font-light tracking-wider uppercase flex items-center space-x-1 transition-colors duration-300`}
+                      className={`${isScrolled ? 'text-gray-800' : 'text-white'} font-light tracking-wider uppercase flex items-center space-x-1 transition-colors duration-300 border-2 border-white px-4 py-2`}
                     >
                       <span>CONSTRUCCIÓN</span>
                       <ChevronDown className="h-4 w-4" />
@@ -387,7 +387,7 @@ export default function Home() {
                   </DropdownMenuContent>
                 </DropdownMenu>
 
-                <Link href="/proyectos">
+                {/* <Link href="/proyectos">
                   <Button
                     variant="ghost"
                     className={`${isScrolled ? 'text-gray-800' : 'text-white'} font-light tracking-wider uppercase transition-colors duration-300`}
@@ -403,14 +403,14 @@ export default function Home() {
                   >
                     SOBRE NOSOTROS
                   </Button>
-                </Link>
+                </Link> */}
 
                 {/* Language Selector */}
                 <DropdownMenu>
                   <DropdownMenuTrigger asChild>
                     <Button
                       variant="ghost"
-                      className={`${isScrolled ? 'text-gray-800' : 'text-white'} flex items-center space-x-1 transition-colors duration-300`}
+                      className={`${isScrolled ? 'text-gray-800' : 'text-white'} flex items-center space-x-1 transition-colors duration-300 border-2 border-white px-4 py-2`}
                     >
                       <Globe className="h-4 w-4" />
                       <ChevronDown className="h-4 w-4" />
@@ -481,7 +481,7 @@ export default function Home() {
             {/* CTA Button */}
             <Link href="/proyectos">
               <Button
-                className="bg-orange-500 text-white px-12 py-4 text-lg font-light tracking-[0.15em] uppercase rounded-none border-0"
+                className="bg-orange-500 text-white px-12 py-4 text-sm font-light tracking-[0.15em] uppercase rounded-none border-0"
               >
                 EXPLORAR NUESTRO PORTAFOLIO
               </Button>
