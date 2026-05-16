@@ -1,6 +1,6 @@
 import { Link, useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
-import { Building2, Home, Phone, Users, FolderOpen, Zap, HardHat, ChevronDown, Landmark, Pyramid, Globe } from "lucide-react";
+import {  Home, Phone, Users, FolderOpen, Zap, HardHat, ChevronDown, Landmark,Info, Pyramid, Globe } from "lucide-react";
 import { useState, useEffect } from "react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { USFlag, MXFlag, PTFlag, FRFlag, CNFlag } from "@/components/ui/flag-icons";
@@ -57,7 +57,7 @@ export function Navigation() {
                   <span>{t('nav.inicio')}</span>
                 </Button>
               </Link>
-               {/* <DropdownMenu>
+               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
                   <Button
                     variant={location.includes("/arquitectura") ? "default" : "ghost"}
@@ -80,8 +80,8 @@ export function Navigation() {
                     </Link>
                   </DropdownMenuItem>
                 </DropdownMenuContent>
-              </DropdownMenu> */}
-              {/* <DropdownMenu>
+              </DropdownMenu>
+              <DropdownMenu>
                 <DropdownMenuTrigger asChild>
                   <Button
                     variant={location.includes("/estructural") ? "default" : "ghost"}
@@ -104,10 +104,10 @@ export function Navigation() {
                     </Link>
                   </DropdownMenuItem>
                 </DropdownMenuContent>
-              </DropdownMenu> */}
+              </DropdownMenu>
               
               {/* Instalaciones with Dropdown */}
-              {/* <DropdownMenu>
+              <DropdownMenu>
                 <DropdownMenuTrigger asChild>
                   <Button
                     variant={location.includes("/instalaciones") ? "default" : "ghost"}
@@ -140,10 +140,10 @@ export function Navigation() {
                     </Link>
                   </DropdownMenuItem>
                 </DropdownMenuContent>
-              </DropdownMenu> */}
+              </DropdownMenu>
               
               {/* Construccion with Dropdown */}
-              {/* <DropdownMenu>
+              <DropdownMenu>
                 <DropdownMenuTrigger asChild>
                   <Button
                     variant={location.includes("/construccion") ? "default" : "ghost"}
@@ -166,34 +166,38 @@ export function Navigation() {
                     </Link>
                   </DropdownMenuItem>
                 </DropdownMenuContent>
-              </DropdownMenu> */}
-              <Link href="/nosotros">
-                <Button
-                  variant={location === "/nosotros" ? "default" : "ghost"}
-                  className="flex items-center space-x-2"
-                >
-                  <Users className="h-4 w-4" />
-                  <span>{t('nav.sobre-nosotros')}</span>
-                </Button>
-              </Link>
-              <Link href="/proyectos">
-                <Button
-                  variant={location === "/proyectos" ? "default" : "ghost"}
-                  className="flex items-center space-x-2"
-                >
-                  <FolderOpen className="h-4 w-4" />
-                  <span>{t('nav.proyectos')}</span>
-                </Button>
-              </Link>
-              <Link href="/contacto">
-                <Button
-                  variant={location === "/contacto" ? "default" : "ghost"}
-                  className="flex items-center space-x-2"
-                >
-                  <Phone className="h-4 w-4" />
-                  <span>{t('nav.contacto')}</span>
-                </Button>
-              </Link>
+              </DropdownMenu>
+
+              {/* Informacion with Dropdown */}
+               <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button
+                    variant={location.includes("/informacion") ? "default" : "ghost"}
+                    className="flex items-center space-x-2"
+                  >
+                    <Info className="h-4 w-4" />
+                    <span>{t('nav.informacion')}</span>
+                    <ChevronDown className="h-4 w-4" />
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent>
+                  <DropdownMenuItem asChild>
+                    <Link href="/proyectos">
+                      <span>{t('nav.informacion.proyectos')}</span>
+                    </Link>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem asChild>
+                    <Link href="/contacto">
+                      <span>{t('nav.informacion.contacto')}</span>
+                    </Link>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem asChild>
+                    <Link href="/nosotros">
+                      <span>{t('nav.informacion.nosotros')}</span>
+                    </Link>
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
             </div>
               
             {/* Language Selector Dropdown - Posicionado a la derecha */}

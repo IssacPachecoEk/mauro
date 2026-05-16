@@ -94,7 +94,7 @@ export function ServiceTemplate({ title, subtitle, description, services, filter
   const { t } = useLanguage();
 
   // Filtrar proyectos por tag
-  const proyectosFiltrados = proyectos.filter(proyecto => 
+  const proyectosFiltrados = proyectos.filter(proyecto =>
     proyecto.tags.includes(filterTag)
   );
 
@@ -205,6 +205,11 @@ export function ServiceTemplate({ title, subtitle, description, services, filter
                         <CardTitle className="text-2xl text-gray-800">
                           {proyecto.titulo}
                         </CardTitle>
+                        <Link href={`/proyecto/${proyecto.id}`}>
+                          <Button variant="outline" size="sm" className="w-fit">
+                            {t('projects.moreInfo')}
+                          </Button>
+                        </Link>
                       </CardHeader>
                       <CardContent className="space-y-6 h-full flex flex-col">
                         <p className="text-gray-600 leading-relaxed">
