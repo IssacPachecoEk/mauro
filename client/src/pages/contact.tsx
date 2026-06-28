@@ -11,11 +11,21 @@ import { useToast } from "@/hooks/use-toast";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 const contactFormSchema = z.object({
-  nombre: z.string().min(2, "El nombre debe tener al menos 2 caracteres"),
-  email: z.string().email("Ingresa un email válido"),
-  telefono: z.string().min(10, "Ingresa un teléfono válido"),
+  nombre: z
+    .string()
+    .min(2, "El nombre debe tener al menos 2 caracteres")
+    .max(70, "El nombre no puede exceder 70 caracteres"),
+  email: z
+    .string()
+    .trim()
+    .email("Ingresa un email válido")
+    .refine((value) => !/\s/.test(value), "El correo no puede contener espacios"),
+  telefono: z.string().regex(/^\d{10}$/, "El teléfono debe tener exactamente 10 dígitos"),
   tipoProyecto: z.string().min(1, "Selecciona el tipo de proyecto"),
-  mensaje: z.string().min(10, "El mensaje debe tener al menos 10 caracteres"),
+  mensaje: z
+    .string()
+    .min(10, "El mensaje debe tener al menos 10 caracteres")
+    .max(2500, "El mensaje no puede exceder 2,500 caracteres"),
 });
 
 type ContactFormData = z.infer<typeof contactFormSchema>;
@@ -112,7 +122,7 @@ export default function Contact() {
                       <FormItem>
                         <FormLabel>{t('contact.form.name')} *</FormLabel>
                         <FormControl>
-                          <Input placeholder={t('contact.form.name.placeholder')} {...field} />
+                          <Input maxLength={70} placeholder={t('contact.form.name.placeholder')} {...field} />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -127,7 +137,14 @@ export default function Contact() {
                         <FormItem>
                           <FormLabel>{t('contact.form.email')} *</FormLabel>
                           <FormControl>
-                            <Input type="email" placeholder={t('contact.form.email.placeholder')} {...field} />
+                            <Input
+                              type="email"
+                              autoComplete="email"
+                              inputMode="email"
+                              placeholder={t('contact.form.email.placeholder')}
+                              {...field}
+                              onChange={(event) => field.onChange(event.target.value.replace(/\s/g, ""))}
+                            />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
@@ -141,7 +158,15 @@ export default function Contact() {
                         <FormItem>
                           <FormLabel>{t('contact.form.phone')} *</FormLabel>
                           <FormControl>
-                            <Input type="tel" placeholder={t('contact.form.phone.placeholder')} {...field} />
+                            <Input
+                              type="tel"
+                              inputMode="numeric"
+                              maxLength={10}
+                              pattern="[0-9]{10}"
+                              placeholder={t('contact.form.phone.placeholder')}
+                              {...field}
+                              onChange={(event) => field.onChange(event.target.value.replace(/\D/g, ""))}
+                            />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
@@ -185,6 +210,7 @@ export default function Contact() {
                           <Textarea
                             placeholder={t('contact.form.message.placeholder')}
                             className="min-h-[120px]"
+                            maxLength={2500}
                             {...field}
                           />
                         </FormControl>

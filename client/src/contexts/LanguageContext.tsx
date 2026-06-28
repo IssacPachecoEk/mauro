@@ -228,7 +228,7 @@ const translations = {
     'contact.form.email': 'Email',
     'contact.form.email.placeholder': 'tu@email.com',
     'contact.form.phone': 'Teléfono',
-    'contact.form.phone.placeholder': '+52 55 1234 5678',
+    'contact.form.phone.placeholder': '9991284512',
     'contact.form.project-type': 'Tipo de Proyecto',
     'contact.form.project-type.placeholder': 'Selecciona el tipo de proyecto',
     'contact.form.project-type.casa': 'Casa Residencial',
