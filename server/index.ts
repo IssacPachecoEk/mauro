@@ -1,6 +1,8 @@
+import "dotenv/config";
 import express, { type Request, Response, NextFunction } from "express";
 import { registerRoutes } from "./routes";
 import { setupVite, serveStatic, log } from "./vite";
+import type { AddressInfo } from "net";
 
 const app = express();
 app.use(express.json());
@@ -59,12 +61,21 @@ app.use((req, res, next) => {
   // ALWAYS serve the app on port 5000
   // this serves both the API and the client.
   // It is the only port that is not firewalled.
-  const port = 5000;
+  const port = 5001;
+  server.on("error", (error: NodeJS.ErrnoException) => {
+    if (error.code === "EADDRINUSE") {
+      log(`port ${port} is already in use. Stop the previous dev server and retry.`, "express");
+      process.exit(1);
+    }
+
+    throw error;
+  });
+
   server.listen({
     port,
     host: "0.0.0.0",
-    reusePort: true,
   }, () => {
-    log(`serving on port ${port}`);
+    const address = server.address() as AddressInfo | null;
+    log(`serving on port ${address?.port ?? port}`);
   });
 })();

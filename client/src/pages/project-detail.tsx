@@ -90,6 +90,14 @@ export default function ProjectDetail() {
   console.log('Location:', location, 'Project ID:', projectId, 'Parsed ID:', parsedId);
   
   const proyecto = parsedId ? proyectosDetalle[parsedId as keyof typeof proyectosDetalle] : null;
+  const projectIds = Object.keys(proyectosDetalle)
+    .map((id) => Number(id))
+    .sort((a, b) => a - b);
+  const currentIndex = parsedId ? projectIds.indexOf(parsedId) : -1;
+  const previousProjectId = currentIndex > 0 ? projectIds[currentIndex - 1] : null;
+  const nextProjectId = currentIndex >= 0 && currentIndex < projectIds.length - 1
+    ? projectIds[currentIndex + 1]
+    : null;
 
   if (!proyecto) {
     return (
@@ -112,12 +120,44 @@ export default function ProjectDetail() {
       {/* Header con navegación */}
       <div className="bg-white border-b border-gray-200">
         <div className="container mx-auto px-4 py-4">
-          <Link href="/proyectos">
-            <Button variant="outline" size="sm">
-              <ArrowLeft className="mr-2 h-4 w-4" />
-              {t('projectDetail.volver')}
-            </Button>
-          </Link>
+          <div className="flex flex-wrap items-center justify-between gap-2">
+            <Link href="/proyectos">
+              <Button variant="outline" size="sm">
+                <ArrowLeft className="mr-2 h-4 w-4" />
+                {t('projectDetail.volver')}
+              </Button>
+            </Link>
+
+            <div className="flex items-center gap-2">
+              {previousProjectId ? (
+                <Link href={`/proyecto/${previousProjectId}`}>
+                  <Button variant="outline" size="sm">
+                    <ArrowLeft className="mr-2 h-4 w-4" />
+                    Ver previo
+                  </Button>
+                </Link>
+              ) : (
+                <Button variant="outline" size="sm" disabled>
+                  <ArrowLeft className="mr-2 h-4 w-4" />
+                  Ver previo
+                </Button>
+              )}
+
+              {nextProjectId ? (
+                <Link href={`/proyecto/${nextProjectId}`}>
+                  <Button variant="outline" size="sm">
+                    Ver siguiente
+                    <ArrowLeft className="ml-2 h-4 w-4 rotate-180" />
+                  </Button>
+                </Link>
+              ) : (
+                <Button variant="outline" size="sm" disabled>
+                  Ver siguiente
+                  <ArrowLeft className="ml-2 h-4 w-4 rotate-180" />
+                </Button>
+              )}
+            </div>
+          </div>
         </div>
       </div>
 

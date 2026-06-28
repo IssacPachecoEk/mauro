@@ -1,6 +1,6 @@
 import { Link, useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
-import {  Home, Phone, Users, FolderOpen, Zap, HardHat, ChevronDown, Landmark,Info, Pyramid, Globe } from "lucide-react";
+import {  Home, Phone, FolderOpen, Zap, HardHat, ChevronDown, Landmark, Info, Pyramid, Globe } from "lucide-react";
 import { useState, useEffect } from "react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { USFlag, MXFlag, PTFlag, FRFlag, CNFlag } from "@/components/ui/flag-icons";
@@ -11,6 +11,7 @@ export function Navigation() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false); // Estado para el menú móvil
   const [isScrolled, setIsScrolled] = useState(false);
   const { language, setLanguage, t } = useLanguage();
+  const desktopMenuButtonClass = "flex items-center gap-2 px-2 xl:px-3";
 
   // Detectar scroll para cambiar el fondo del header
   useEffect(() => {
@@ -35,7 +36,7 @@ export function Navigation() {
           ? 'bg-white' 
           : 'bg-white'
       }`}>
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-3 xl:px-4">
           <div className="flex items-center justify-center h-16 relative">
             {/* Logo */}
             {/* <Link href="/">
@@ -47,11 +48,11 @@ export function Navigation() {
             </Link> */}
 
             {/* Navigation Links (desktop) - Centrados */}
-            <div className="hidden md:flex space-x-6 items-center">
+            <div className="hidden xl:flex items-center space-x-2 xl:space-x-3 pr-28 xl:pr-36 2xl:pr-44">
               <Link href="/">
                 <Button
                   variant={location === "/" ? "default" : "ghost"}
-                  className="flex items-center space-x-2"
+                  className={desktopMenuButtonClass}
                 >
                   <Home className="h-4 w-4" />
                   <span>{t('nav.inicio')}</span>
@@ -61,7 +62,7 @@ export function Navigation() {
                 <DropdownMenuTrigger asChild>
                   <Button
                     variant={location.includes("/arquitectura") ? "default" : "ghost"}
-                    className="flex items-center space-x-2"
+                    className={desktopMenuButtonClass}
                   >
                     <Landmark className="h-4 w-4" />
                     <span>{t('nav.arquitectura')}</span>
@@ -85,7 +86,7 @@ export function Navigation() {
                 <DropdownMenuTrigger asChild>
                   <Button
                     variant={location.includes("/estructural") ? "default" : "ghost"}
-                    className="flex items-center space-x-2"
+                    className={desktopMenuButtonClass}
                   >
                     <Pyramid className="h-4 w-4" />
                     <span>{t('nav.estructural')}</span>
@@ -111,7 +112,7 @@ export function Navigation() {
                 <DropdownMenuTrigger asChild>
                   <Button
                     variant={location.includes("/instalaciones") ? "default" : "ghost"}
-                    className="flex items-center space-x-2"
+                    className={desktopMenuButtonClass}
                   >
                     <Zap className="h-4 w-4" />
                     <span>{t('nav.instalaciones')}</span>
@@ -147,7 +148,7 @@ export function Navigation() {
                 <DropdownMenuTrigger asChild>
                   <Button
                     variant={location.includes("/construccion") ? "default" : "ghost"}
-                    className="flex items-center space-x-2"
+                    className={desktopMenuButtonClass}
                   >
                     <HardHat className="h-4 w-4" />
                     <span>{t('nav.construccion')}</span>
@@ -173,7 +174,7 @@ export function Navigation() {
                 <DropdownMenuTrigger asChild>
                   <Button
                     variant={location.includes("/informacion") ? "default" : "ghost"}
-                    className="flex items-center space-x-2"
+                    className={desktopMenuButtonClass}
                   >
                     <Info className="h-4 w-4" />
                     <span>{t('nav.informacion')}</span>
@@ -201,16 +202,16 @@ export function Navigation() {
             </div>
               
             {/* Language Selector Dropdown - Posicionado a la derecha */}
-            <div className="absolute right-0">
+            <div className="absolute right-1 xl:right-2 hidden xl:block">
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
                   <Button
                     variant="ghost"
                     size="sm"
-                    className="flex items-center space-x-2"
+                    className="flex items-center gap-2 px-2 xl:px-3"
                   >
                     <Globe className="h-4 w-4" />
-                    <span className="hidden sm:inline">{t(`language.${language}`)}</span>
+                    <span className="hidden lg:inline">{t(`language.${language}`)}</span>
                     <ChevronDown className="h-4 w-4" />
                   </Button>
                 </DropdownMenuTrigger>
@@ -255,7 +256,7 @@ export function Navigation() {
             </div>
 
             {/* Mobile menu button */}
-            <div className="md:hidden absolute right-0">
+            <div className="xl:hidden ml-auto">
               <Button 
                 variant="ghost" 
                 size="sm"
@@ -270,7 +271,7 @@ export function Navigation() {
 
           {/* Mobile menu (condicional) */}
           {mobileMenuOpen && (
-            <div className="md:hidden pb-4 space-y-2 bg-white border-t border-gray-200">
+            <div className="xl:hidden pb-4 space-y-2 bg-white border-t border-gray-200">
               <Link href="/" onClick={() => setMobileMenuOpen(false)}>
                 <Button
                   variant={location === "/" ? "default" : "ghost"}
@@ -280,15 +281,42 @@ export function Navigation() {
                   {t('nav.inicio')}
                 </Button>
               </Link>
-              <Link href="/nosotros" onClick={() => setMobileMenuOpen(false)}>
+
+              <div className="space-y-1">
                 <Button
-                  variant={location === "/nosotros" ? "default" : "ghost"}
-                  className="w-full justify-start"
+                  variant={location.includes("/informacion") ? "default" : "ghost"}
+                  className="w-full justify-start text-sm font-medium"
                 >
-                  <Users className="h-4 w-4 mr-2" />
-                  {t('nav.sobre-nosotros')}
+                  <Info className="h-4 w-4 mr-2" />
+                  {t('nav.informacion')}
                 </Button>
-              </Link>
+                <div className="pl-6 space-y-1">
+                  <Link href="/informacion/proyectos" onClick={() => setMobileMenuOpen(false)}>
+                    <Button
+                      variant="ghost"
+                      className="w-full justify-start text-sm"
+                    >
+                      {t('nav.informacion.proyectos')}
+                    </Button>
+                  </Link>
+                  <Link href="/informacion/contacto" onClick={() => setMobileMenuOpen(false)}>
+                    <Button
+                      variant="ghost"
+                      className="w-full justify-start text-sm"
+                    >
+                      {t('nav.informacion.contacto')}
+                    </Button>
+                  </Link>
+                  <Link href="/informacion/nosotros" onClick={() => setMobileMenuOpen(false)}>
+                    <Button
+                      variant="ghost"
+                      className="w-full justify-start text-sm"
+                    >
+                      {t('nav.informacion.nosotros')}
+                    </Button>
+                  </Link>
+                </div>
+              </div>
 
               <div className="space-y-1">
                 <Button

@@ -33,6 +33,8 @@ export default function Home() {
       [section]: !prev[section]
     }));
   };
+
+  const desktopNavButtonClass = `${isScrolled ? 'text-gray-800' : 'text-white'} font-light text-[11px] lg:text-xs tracking-[0.1em] uppercase transition-colors duration-300 border-2 border-white px-2.5 lg:px-3 py-2 whitespace-nowrap`;
   
   return (
     <>
@@ -255,26 +257,14 @@ export default function Home() {
             ? 'bg-white shadow-lg border-b border-gray-200' 
             : 'bg-transparent'
         }`}>
-          <div className="container mx-auto px-6 py-4">
-            <div className="flex items-center justify-between">
-              {/* Logo */}
-              <Link href="/">
-                <div className="flex items-center space-x-3 cursor-pointer">
-                <div className={`w-12 h-12 rounded-lg flex items-center justify-center transition-colors duration-300 ${
-                  isScrolled ? 'bg-gray-800' : 'bg-white/90'
-                }`}>
-                  <span className={`text-xl font-bold transition-colors duration-300 ${
-                    isScrolled ? 'text-white' : 'text-gray-900'
-                  }`}>MM</span>
-                  </div>
-                </div>
-              </Link>
+          <div className="w-full px-2 lg:px-4 py-3 overflow-hidden">
+            <div className="flex items-center justify-center">
               {/* Navigation Links */}
-              <div className={`flex space-x-8 items-center ${isScrolled ? 'text-gray-800' : 'text-white'}`}>
+              <div className={`flex flex-wrap items-center justify-center gap-2 lg:gap-3 min-w-0 ${isScrolled ? 'text-gray-800' : 'text-white'}`}>
                 <Link href="/">
                   <Button
                     variant="ghost"
-                    className={`${isScrolled ? 'text-gray-800' : 'text-white'} font-light tracking-wider uppercase transition-colors duration-300 border-2 border-white px-4 py-2`}
+                    className={desktopNavButtonClass}
                   >
                     {t('nav.inicio')}
                   </Button>
@@ -284,7 +274,7 @@ export default function Home() {
                   <DropdownMenuTrigger asChild>
                     <Button
                       variant="ghost"
-                      className={`${isScrolled ? 'text-gray-800' : 'text-white'} font-light tracking-wider uppercase flex items-center space-x-1 transition-colors duration-300 border-2 border-white px-4 py-2`}
+                      className={`${desktopNavButtonClass} flex items-center space-x-1`}
                     >
                       <span>{t('nav.arquitectura')}</span>
                       <ChevronDown className="h-4 w-4" />
@@ -308,7 +298,7 @@ export default function Home() {
                   <DropdownMenuTrigger asChild>
                     <Button
                       variant="ghost"
-                      className={`${isScrolled ? 'text-gray-800' : 'text-white'} font-light tracking-wider uppercase flex items-center space-x-1 transition-colors duration-300 border-2 border-white px-4 py-2`}
+                      className={`${desktopNavButtonClass} flex items-center space-x-1`}
                     >
                       <span>{t('nav.estructural')}</span>
                       <ChevronDown className="h-4 w-4" />
@@ -332,7 +322,7 @@ export default function Home() {
                   <DropdownMenuTrigger asChild>
                     <Button
                       variant="ghost"
-                      className={`${isScrolled ? 'text-gray-800' : 'text-white'} font-light tracking-wider uppercase flex items-center space-x-1 transition-colors duration-300 border-2 border-white px-4 py-2`}
+                      className={`${desktopNavButtonClass} flex items-center space-x-1`}
                     >
                       <span>{t('nav.instalaciones')}</span>
                       <ChevronDown className="h-4 w-4" />
@@ -366,7 +356,7 @@ export default function Home() {
                   <DropdownMenuTrigger asChild>
                     <Button
                       variant="ghost"
-                      className={`${isScrolled ? 'text-gray-800' : 'text-white'} font-light tracking-wider uppercase flex items-center space-x-1 transition-colors duration-300 border-2 border-white px-4 py-2`}
+                      className={`${desktopNavButtonClass} flex items-center space-x-1`}
                     >
                       <span>{t('nav.construccion')}</span>
                       <ChevronDown className="h-4 w-4" />
@@ -390,7 +380,7 @@ export default function Home() {
                   <DropdownMenuTrigger asChild>
                     <Button
                       variant="ghost"
-                      className={`${isScrolled ? 'text-gray-800' : 'text-white'} font-light tracking-wider uppercase flex items-center space-x-1 transition-colors duration-300 border-2 border-white px-4 py-2`}
+                      className={`${desktopNavButtonClass} flex items-center space-x-1`}
                     >
                       <span>{t('nav.informacion')}</span>
                       <ChevronDown className="h-4 w-4" />
@@ -419,7 +409,7 @@ export default function Home() {
                   <DropdownMenuTrigger asChild>
                     <Button
                       variant="ghost"
-                      className={`${isScrolled ? 'text-gray-800' : 'text-white'} flex items-center space-x-1 transition-colors duration-300 border-2 border-white px-4 py-2`}
+                      className={`${desktopNavButtonClass} flex items-center space-x-1`}
                     >
                       <Globe className="h-4 w-4" />
                       <ChevronDown className="h-4 w-4" />

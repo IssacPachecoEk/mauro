@@ -2,7 +2,7 @@ import { QueryClientProvider } from "@tanstack/react-query";
 import { queryClient } from "./lib/queryClient";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
-import { Router, Route } from "wouter";
+import { Router, Route, Switch } from "wouter";
 import Home from "@/pages/home";
 import About from "@/pages/about";
 import Contact from "@/pages/contact";
@@ -15,12 +15,13 @@ import { Navigation } from "@/components/navigation";
 import Footer from "@/components/Footer";
 
 function App() {
-  const { t } = useLanguage();
-  const serviceConfigurations = getServiceConfigurations(t);
+  const { t, language } = useLanguage();
+  const serviceConfigurations = getServiceConfigurations(t, language);
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
         <Router>
+          <Switch>
           <Route path="/">
             <div className="min-h-screen bg-background">
               <Home />
@@ -247,15 +248,16 @@ function App() {
               <Footer />
             </div>
           </Route>
-          <Route>
-            <div className="min-h-screen bg-background">
+          <Route path="*">
+            <div className="min-h-screen bg-background flex flex-col">
               <Navigation />
-              <main>
-                <h1 className="text-center mt-20">404 - Página no encontrada</h1>
+              <main className="flex-1 flex items-center justify-center px-4">
+                <h1 className="text-center text-2xl">404 - Página no encontrada</h1>
               </main>
               <Footer />
             </div>
           </Route>
+          </Switch>
         </Router>
         <Toaster />
       </TooltipProvider>

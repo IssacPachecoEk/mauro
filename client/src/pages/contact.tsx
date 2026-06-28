@@ -35,16 +35,34 @@ export default function Contact() {
     },
   });
 
-  const onSubmit = (data: ContactFormData) => {
-    // En una aplicación real, aquí enviarías los datos al servidor
-    console.log("Datos del formulario:", data);
+  const onSubmit = async (data: ContactFormData) => {
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
 
-    toast({
-      title: "Mensaje Enviado",
-      description: "Hemos recibido tu solicitud. Te contactaremos pronto.",
-    });
+      if (!response.ok) {
+        const errorData = (await response.json().catch(() => null)) as { message?: string } | null;
+        throw new Error(errorData?.message || "No se pudo enviar el mensaje");
+      }
 
-    form.reset();
+      toast({
+        title: "Mensaje Enviado",
+        description: "Hemos recibido tu solicitud. Te contactaremos pronto.",
+      });
+
+      form.reset();
+    } catch (error) {
+      toast({
+        variant: "destructive",
+        title: "Error al enviar",
+        description: error instanceof Error ? error.message : "Inténtalo de nuevo en unos minutos.",
+      });
+    }
   };
 
   return (
@@ -175,9 +193,9 @@ export default function Contact() {
                     )}
                   />
 
-                  <Button type="submit" size="lg" className="w-full">
+                  <Button type="submit" size="lg" className="w-full" disabled={form.formState.isSubmitting}>
                     <Send className="mr-2 h-4 w-4" />
-                    {t('contact.form.send')}
+                    {form.formState.isSubmitting ? "Enviando..." : t('contact.form.send')}
                   </Button>
                 </form>
               </Form>
