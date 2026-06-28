@@ -4,11 +4,11 @@ import nodemailer from "nodemailer";
 import { z } from "zod";
 
 const contactFormSchema = z.object({
-  nombre: z.string().min(2),
-  email: z.string().email(),
-  telefono: z.string().min(10),
+  nombre: z.string().min(2).max(70),
+  email: z.string().trim().email().refine((value) => !/\s/.test(value)),
+  telefono: z.string().regex(/^\d{10}$/),
   tipoProyecto: z.string().min(1),
-  mensaje: z.string().min(10),
+  mensaje: z.string().min(10).max(2500),
 });
 
 export async function registerRoutes(app: Express): Promise<Server> {
